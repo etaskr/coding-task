@@ -1,10 +1,10 @@
 /// <reference path="./../../../../typings/tsd.d.ts" />
 
-import {WeatherServiceInterface} from "./weatherServiceInterface";
-import {HttpRequestInterface} from "./../http-connection/httpRequestInterface";
-import {WeatherInterface} from "./../../models/weatherInterface";
-import {CoderInterface} from "./../coder/coderInterface";
-import {JsonToWeatherMapperInterface} from "./../../mapper/jsonToWeatherMapperInterface";
+import {WeatherServiceInterface} from "./weather-service-interface";
+import {HttpRequestInterface} from "./../http-connection/http-request-interface";
+import {WeatherInterface} from "./../../models/weather-interface";
+import {CoderInterface} from "./../coder/coder-interface";
+import {JsonToWeatherMapperInterface} from "./../../mapper/json-to-weather-mapper-interface";
 
 export class ForecastWeatherApi implements WeatherServiceInterface {
     private url: string;

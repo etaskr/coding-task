@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "nodej skill test",
   "scripts": {
+    "postinstall": "grunt",
     "start": "node build/app.js"
   },
   "author": "",

@@ -1,4 +1,4 @@
-import {WeatherInterface} from "./weatherInterface";
+import {WeatherInterface} from "./weather-interface";
 
 export class Weather implements WeatherInterface {
     private latitude: number;

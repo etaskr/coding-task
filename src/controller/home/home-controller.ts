@@ -1,6 +1,6 @@
 import * as express from "express";
 import {Controller} from "./../controller";
-import {WeatherServiceInterface} from "./../../../src/library/services/weather/weatherServiceInterface";
+import {WeatherServiceInterface} from "./../../../src/library/services/weather/weather-service-interface";
 
 export class HomeController extends Controller {
 

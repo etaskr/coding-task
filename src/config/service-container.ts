@@ -1,10 +1,10 @@
 import {Container} from "./../library/services/container/container";
-import {ForecastWeatherApi} from "./../library/services/weather/forecastWeatherApi";
-import {HttpWrapper} from "./../library/services/http-connection/httpWrapper";
-import {BinaryCoderWrapper} from "./../library/services/coder/binaryCoderWrapper";
-import {JsonToWeatherMapper} from "./../library/mapper/jsonToWeatherMapper";
-import {WeatherFactory} from "./../library/factory/weatherFactory";
-import {HomeController} from "./../controller/home/homeController";
+import {ForecastWeatherApi} from "./../library/services/weather/forecast-weather-api";
+import {HttpWrapper} from "./../library/services/http-connection/http-wrapper";
+import {BinaryCoderWrapper} from "./../library/services/coder/binary-coder-wrapper";
+import {JsonToWeatherMapper} from "./../library/mapper/json-to-weather-mapper";
+import {WeatherFactory} from "./../library/factory/weather-factory";
+import {HomeController} from "./../controller/home/home-controller";
 
 export let serviceContainer = new Container();
 

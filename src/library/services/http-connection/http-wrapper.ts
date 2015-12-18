@@ -4,7 +4,7 @@ import * as http from "http";
 import * as https from "https";
 import * as urlParser from "url";
 
-import {HttpRequestInterface} from "./httpRequestInterface";
+import {HttpRequestInterface} from "./http-request-interface";
 
 export class HttpWrapper implements HttpRequestInterface {
     public get(url: string): Promise<any> {

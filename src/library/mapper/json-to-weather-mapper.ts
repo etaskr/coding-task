@@ -1,6 +1,6 @@
-import {JsonToWeatherMapperInterface} from "./jsonToWeatherMapperInterface";
-import {WeatherInterface} from "./../models/WeatherInterface";
-import {WeatherFactoryInterface} from "./../factory/WeatherFactoryInterface";
+import {JsonToWeatherMapperInterface} from "./json-to-weather-mapper-interface";
+import {WeatherInterface} from "./../models/weather-interface";
+import {WeatherFactoryInterface} from "./../factory/weather-factory-interface";
 
 export class JsonToWeatherMapper implements JsonToWeatherMapperInterface {
 

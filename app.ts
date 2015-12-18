@@ -4,7 +4,7 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as errorHandler from "errorhandler";
 
-import {HomeController} from "./src/controller/home/homeController";
+import {HomeController} from "./src/controller/home/home-controller";
 import {serviceContainer} from "./src/config/service-container";
 
 let app = express();

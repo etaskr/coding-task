@@ -1,5 +1,5 @@
 /// <reference path="./../../../../typings/tsd.d.ts" />
-import {CoderInterface} from "./coderInterface";
+import {CoderInterface} from "./coder-interface";
 
 export class BinaryCoderWrapper implements CoderInterface {
 
