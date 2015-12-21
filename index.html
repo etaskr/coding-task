@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <p id="forecast">please wait a minute</p>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+          var socket = io.connect('http://localhost:8080');
+          var userId = Math.random().toString(16).substring(2,15);
+
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(positionSuccess, positionError, { enableHighAccuracy: true });
+          } else {
+            window.alert('your browser need to be updated');
+          }
+
+          //sucess function
+          function positionSuccess(position) {
+            var positionToSend = {
+              lat : position.coords.latitude,
+              lng : position.coords.longitude,
+              acr : position.coords.accuracy
+            }
+            socket.emit('position', positionToSend);
+          }
+          function positionError(error) {
+            console.log('Error');
+          }
+
+          //socket
+
+          socket.on('connected', function(connected) {
+              console.log('connected');
+          });
+
+          socket.emit('userId', userId);
+
+          socket.on('forecast', function(forecast) {
+              var temperature =JSON.stringify(forecast.currently.temperature);
+              var zone = JSON.stringify(forecast.timezone);
+              var icon = '';
+              switch (forecast.hourly.icon) {
+                  case 'clear-day':
+                      icon= "http://icon-park.com/imagefiles/simple_weather_icons2_sunny.png";
+                      break;
+                  case 'clear-night':
+                      icon = 'http://icons.iconarchive.com/icons/icons8/android/512/Weather-Partly-Cloudy-Night-icon.png';
+                      break;
+                  case 'rain':
+                      icon = 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQH7CbisFnQxslPC1SKmYlgVRa3IKzIPQ_biVIWxokGN9HsKZmj';
+                      break;
+                  case 'snow':
+                      icon = 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR_AjYk3tCI2RaDfu_ykpqXnzvRJNqrNiy5XHmaL1ur8aKTB2s6';
+                      break;
+                  case 'sleet':
+                      icon = 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcREsoR5VNP3jMKNP76Thsm8kDNcjFIrrLD7AqCmcrH3E2C2OtbO';
+                      break;
+                  case 'wind':
+                      icon = 'http://uxrepo.com/static/icon-sets/meteo/svg/wind.svg';
+                      break;
+                  case 'fog':
+                      icon = 'https://cdn1.iconfinder.com/data/icons/weather-18/512/fog_mist-512.png';
+                      break;
+                  case 'cloudy':
+                      icon = 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFmx42Nde3Z-HLhGUAzI7qZfqpS5L3yKUNuDLvdUqPttZyyBmk';
+                      break;
+                  case 'sun':
+                      icon = 'http://www.endlessicons.com/wp-content/uploads/2012/12/sunny-icon-614x460.png';
+                      break;
+                  case 'partly-cloudy-night':
+                      icon = 'http://icons.iconarchive.com/icons/icons8/android/512/Weather-Partly-Cloudy-Night-icon.png';
+                      break;
+              };
+              document.getElementById("forecast").innerHTML = '<img src="'+icon+'" height="42" width="42">    '+temperature +'  Celsius in '+ zone;
+          });
+        </script>
+    </body>
+</html>
