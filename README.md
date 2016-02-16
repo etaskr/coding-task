@@ -1,3 +1,29 @@
+## What you will need:
+nodejs v5.0.0
+npm v3.3.6
+grunt v0.4.5
+
+## Build:
+npm install  (I feel that is not that realiable and needed to do it twice in some cases).
+grunt
+
+## Running the app:
+npm start
+
+paste this into a browser:
+http://<domain>:3000
+
+
+you can change the port to whatever you want in:
+app.ts
+
+ app.listen(3000, () => {
+        console.log("Demo Express server listening on port %d in %s mode", 3000, app.settings.env);
+ });
+
+* There is no unit testing
+-------------
+
 # etaskr Coding Task Guidelines
 
 There's few better ways to assess someone's programming skills than to have them undertake a reasonably open ended coding task. This task is borrowed heavily from https://github.com/Westpac-Mobile/CodingTest, so thank-you to those people for such a great boilerplate. 

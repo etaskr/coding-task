@@ -1,0 +1,38 @@
+<html ng-app="WeatherApp">
+   <head>
+      <title>{{ title }}</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/style.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+   </head>
+   <body class="container-fluid" ng-controller="WeatherController as weather">
+      <div class="row text-center">
+         <h1>[%weather.loadingMessage%]</h1>
+         <div ng-if="weather.forecast == null">
+            <div class="float"><img src="img/ajax-loader.gif"></div>
+            <span><img src="img/weather-sprite.png"></span>
+         </div>
+         <div ng-if="weather.forecast != null">
+            <span>[% weather.forecast.location%]</span>
+            <br />
+            <h2>
+               <b>
+                  [% weather.forecast.temperature%]
+                  <span ng-if="weather.forecast.units == 'us'">°F</span>
+                  <span ng-if="weather.forecast.units == 'si'">°C</span>
+               </b>
+            </h2>
+            <br />
+            <span class="icon icon-weather-size icon-[%weather.forecast.imageName%]"></span>
+            <br />
+            <span>[% weather.forecast.summary%]</span>
+            <br />
+         </div>
+      </div>
+      <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+      <script type="text/javascript" src="js/app.js"></script>
+      <script type="text/javascript" src="js/config.js"></script>
+      <script type="text/javascript" src="js/controller/weather-controller.js"></script>
+    </body>
+</html>

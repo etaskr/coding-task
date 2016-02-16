@@ -1,0 +1,56 @@
+/*
+There was no advantage using less or sass for something as simple as this. However, I could have
+used a sprite css generation tool which would have be ok too.
+*/
+.icon-weather-size {
+    width: 150px;
+    height: 122px;
+}
+
+.icon {
+    display: inline-block;
+}
+
+.icon-clear-day {
+
+    background: url('../img/weather-sprite.png') -451px -310px;
+}
+
+.icon-clear-night {
+    background: url('../img/weather-sprite.png') 0px 0px;
+}
+
+.icon-rain {
+    background: url('../img/weather-sprite.png') -150px -310px;
+}
+
+.icon-snow {
+    background: url('../img/weather-sprite.png') -440px -160px;
+}
+
+.icon-sleet {
+    background: url('../img/weather-sprite.png') -0px -310px;
+}
+
+.icon-wind {
+    background: url('../img/weather-sprite.png') -299px -10px;
+}
+
+
+.icon-fog {
+    background: url('../img/weather-sprite.png') -299px -10px;
+}
+
+
+.icon-cloudy {
+    background: url('../img/weather-sprite.png') -299px -10px;
+    display: inline-block;
+}
+
+.icon-partly-cloudy-day {
+    background: url('../img/weather-sprite.png') -299px -160px;
+}
+
+.icon-partly-cloudy-night {
+    background: url('../img/weather-sprite.png') -299px -320px;
+}

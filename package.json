@@ -1,0 +1,31 @@
+{
+  "name": "etaskr",
+  "version": "1.0.0",
+  "description": "nodej skill test",
+  "scripts": {
+    "postinstall": "grunt",
+    "start": "node build/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-tsd": "^0.2.0-beta.1",
+    "grunt-tslint": "^3.0.1",
+    "grunt-typescript": "^0.8.0",
+    "tsd": "^0.6.5",
+    "tslint": "^3.2.0",
+    "typescript": "^1.7.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "errorhandler": "^1.4.2",
+    "express": "^4.13.3",
+    "html": "0.0.10",
+    "http": "*",
+    "https": "^1.0.0",
+    "twig": "^0.8.2"
+  }
+}
