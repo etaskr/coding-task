@@ -6,18 +6,18 @@ Please do not spend more that 2-3 hours on this task. If it takes you much longe
 
 ## Requirements
 
-The task is to create a basic **Node.js** web application that displays the current temperature using https://forecast.io/ using the geo-location of your browser.
+The task is to create a basic web application that displays the current temperature using https://forecast.io/ using the geo-location of your browser.
 
 ### Key business requirements
 
 * Display the current temperature in degrees celsius
 * Display the temperature based on the geolocation of your browser
 * Display a simple icon and label based on the weather information provided (eg. sunny, cloudy, rainy etc).
-* The API request must be proxied via your node.js application ie. do not make a request from the client side directly to https://developer.forecast.io/ for the weather information.
+* The API request must be proxied via your web application ie. do not make a request from the client side directly to https://developer.forecast.io/ for the weather information. It must go via your localhost app.
 
 ### What we will be looking for in the application
 
-We are looking for engineers that can lead technology and design decisions without the need for explicit guidance. This is why we are not providing an exact outline of what we are looking for so we influence your direction on this task as little as possible. We want to see how you work unencumbered and get to know what really matters to you when developing a web application.
+We are looking for engineers that can lead technology and design decisions without the need for explicit guidance. This is why we are not providing an exact outline of what we are looking for, so we influence your direction on this task as little as possible. We want to see how you work unencumbered and get to know what really matters to you when developing a web application.
 
 ## Getting Started
 
