@@ -10,4 +10,4 @@ Use Skycons to display icon.
 
 The information will be automatically reload using jquery ajax (not refreshing page) every 1 minute. (Configurable in web.config)
 
-This app just displays the information required in the task. The app can be extended to display other info such as wind, temperature forecast, etc. As I do not have enough time I did not put css on the app.
+This app just displays the information required in the task. The app can be extended to display other info such as wind, temperature forecast, etc. As I do not have enough time I did not put css on the app and add comments.
