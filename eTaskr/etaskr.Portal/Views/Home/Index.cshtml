@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Current Temperature";
+}
+
+@section header{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0qaVpsgFIDAxd7vw0L2X1szIJz5kgaWY"></script>
+    <script type="text/javascript" src="http://darkskyapp.github.com/skycons/skycons.js"></script>
+    <script type="text/javascript" src="/Scripts/Custom/Forecast.js"></script>
+}
+
+<input type="hidden" id="reload-frequency" value="@ViewBag.ReloadFrequency" />
+<div id="loading">
+    <img src="http://loading.io/assets/img/hourglass.svg">
+</div>
+
+<div id="content" class="hide">
+    <h2>Temperature</h2>
+    <div class="left">
+        <canvas id="icon" width="128" height="128"></canvas>
+        <p><span id="icon-title"></span></p>
+    </div>
+    <div class="left">
+        <p>Current Temperature</p>
+        <p id="temperature"></p>
+    </div>
+</div>
+
+
