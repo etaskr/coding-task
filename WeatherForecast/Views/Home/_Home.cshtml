@@ -1,0 +1,41 @@
+﻿<!-- ko with: home -->
+<div class="jumbotron">
+    <h1>Weather Forecast App</h1>
+    <p class="lead">Weather Forecast App gets the weather status based on your current location, Enable the location in browser for hazzle free update.</p>
+    @*<p>@Html.ActionLink("Weather ForecastAPI", "Weather", "Home", new { Latitude = "", Longitude = "" }, new { @class = "navbar-brand" })</p>*@
+</div>
+<div class="row" id="partialView">
+    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+</div>
+
+<!-- /ko -->
+<script>
+    var latitude; var longitude;
+    var myData = {Latitude: '', Longitude: ''}; // #1
+    function success(position) {
+        myData.Latitude = latitude = position.coords.latitude;
+        myData.Longitude = longitude = position.coords.longitude;
+       
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Weather")",
+            //dataType: "json",
+        //contentType: "application/json; charset=utf-8",
+            data: myData,
+            success: function (data) {
+                $("#partialView").html(data);            
+        },
+        failure: function (errMsg) {
+            alert(errMsg);
+        }
+    });
+            console.log("latitude" + position.coords.latitude);
+            console.log("longitude" + position.coords.longitude);
+        }
+        function error(data) {
+            console.log("data"+data);
+        }
+        if (navigator) {
+            navigator.geolocation.getCurrentPosition(success, error)
+        }
+</script>
