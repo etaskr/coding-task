@@ -1,0 +1,185 @@
+﻿<p id="demo"></p>
+@{
+    ViewBag.Title = "Current weather";
+}
+
+@section scripts
+{
+    @* ReSharper disable PossibleNullReferenceException *@
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                showNoGeoLocationBox();
+            }
+        }
+
+        function showWeatherBox() {
+            $('#weather-box').show();
+            $('#no-geo-location-box').hide();
+            $('#loading').hide();
+            $('#error').hide();
+        }
+
+        function showNoGeoLocationBox() {
+            $('#no-geo-location-box').show();
+            $('#weather-box').hide();
+            $('#loading').hide();
+            $('#error').hide();
+        }
+
+        function showLoadingBox() {
+            $('#loading').show();
+            $('#weather-box').hide();
+            $('#no-geo-location-box').hide();
+            $('#error').hide();
+        }
+
+        function showErrorBox(errorMessage) {
+            $('#loading').hide();
+            $('#weather-box').hide();
+            $('#no-geo-location-box').hide();
+            $('#error').show();
+            $('#error-message').text(errorMessage != null ? errorMessage : '');
+        }
+
+        function showPosition(position) {
+            showLoadingBox();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GeoLocation", "Home", null, Request.Url.Scheme)',
+                data: "latitude=" + position.coords.latitude.toString() + "&longitude=" + position.coords.longitude.toString(),
+                success: function (data) {
+                    if (data.IsOk) {
+                        showWeatherBox();
+                        $('#location').text(data.Timezone);
+                        $('#current-temperature').text(data.Temperature);
+                        $('#feels-like').text(data.ApparentTemperature);
+                        $('#icon').attr("src", data.Icon);
+                        $('#summary').text(data.Summary);
+                        $('#summary-tooltip').attr('data-original-title', data.Summary);
+                    } else {
+                        showErrorBox(data.ErrorMessage);
+                    }
+                },
+                error: function() {
+                    showErrorBox(null);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            getLocation();
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    @* ReSharper restore PossibleNullReferenceException *@
+}
+
+<div class="jumbotron">
+    <h2>Current weather</h2>
+    <p>This is a basic web application that displays the current temperature using the geo-location of your browser.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div id="weather-box" style="display: none">
+            <div class="row">
+                <div class="col-md-12 weather-info-box">
+                    <div class=" weather-label-box">Location:</div>
+                    <span id="location">&nbsp;</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 weather-info-box">
+                    <div class="weather-label-box">Current temperature:</div>
+                    <span id="current-temperature">&nbsp;</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 weather-info-box">
+                    <div class="weather-label-box">Feels like:</div>
+                    <span id="feels-like">&nbsp;</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 weather-summary-box">
+                    <div class="weather-label-box">
+                        <span id="summary">&nbsp;</span>
+                    </div>
+                    <a href="#" id="summary-tooltip" data-toggle="tooltip" data-placement="top" title="&nbsp;">
+                        <img id="icon" class="weather-icon" alt="weather summary" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="no-geo-location-box" style="display: none">
+            <div class="row">
+                <div class="col-md-12 weather-info-box">
+                    <p>Geo-location is not available.</p>
+                </div>
+            </div>
+        </div>
+        <div id="error" style="display: none">
+            <div class="row">
+                <div class="col-md-12 weather-info-box">
+                    <p>Failed to retrieve weather info for your geo-location.</p>
+                    <p id="error-message">&nbsp;</p>
+                </div>
+            </div>
+        </div>
+        <div id="loading" style="display: none">
+            <div class="row">
+                <div class="col-md-12" style="color: white">
+                    <h3>Loading ...</h3>
+                    <img src='@UrlHelper.GenerateContentUrl("/Content/Images/progress.gif", Context)' alt="Loading" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        # etaskr Coding Task Guidelines
+        <br />
+        <br />
+        There's few better ways to assess someone's programming skills than to have them undertake a reasonably open ended coding task. This task is borrowed heavily from https://github.com/Westpac-Mobile/CodingTest, so thank-you to those people for such a great boilerplate.
+        <br />
+        Please do not spend more that 2-3 hours on this task. If it takes you much longer than that, there is something fundamentally wrong with your approach.
+        <br />
+        <br />
+        ## Requirements
+        <br />
+        <br />
+        The task is to create a basic web application that displays the current temperature using https://forecast.io/ using the geo-location of your browser.
+        <br />
+        <br />
+        ### Key business requirements
+        <br />
+        <br />
+        * Display the current temperature in degrees celsius
+        <br />
+        * Display the temperature based on the geolocation of your browser
+        <br />
+        * Display a simple icon and label based on the weather information provided (eg. sunny, cloudy, rainy etc).
+        <br />
+        * The API request must be proxied via your web application ie. do not make a request from the client side directly to https://developer.forecast.io/ for the weather information. It must go via your localhost app.
+        <br />
+        <br />
+        ### What we will be looking for in the application
+        <br />
+        <br />
+        We are looking for engineers that can lead technology and design decisions without the need for explicit guidance. This is why we are not providing an exact outline of what we are looking for, so we influence your direction on this task as little as possible. We want to see how you work unencumbered and get to know what really matters to you when developing a web application.
+        <br />
+        <br />
+        ## Getting Started
+        <br />
+        <br />
+        * Fork this repository.
+        <br />
+        * Register for a free API key at: https://developer.forecast.io/.
+        <br />
+        * Commit your code, and send us a pull request when you are finished.
+        <br />
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrentWeather", "CurrentWeather\CurrentWeather.csproj", "{9EC671C7-D518-4D4C-BDE3-2ACDB1EE863A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{226E35FE-D80C-40F7-B584-5C4A6421446D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EC671C7-D518-4D4C-BDE3-2ACDB1EE863A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC671C7-D518-4D4C-BDE3-2ACDB1EE863A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC671C7-D518-4D4C-BDE3-2ACDB1EE863A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC671C7-D518-4D4C-BDE3-2ACDB1EE863A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{226E35FE-D80C-40F7-B584-5C4A6421446D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226E35FE-D80C-40F7-B584-5C4A6421446D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226E35FE-D80C-40F7-B584-5C4A6421446D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{226E35FE-D80C-40F7-B584-5C4A6421446D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal
