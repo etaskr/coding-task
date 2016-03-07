@@ -1,0 +1,60 @@
+﻿body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.container {
+	background-color:lightskyblue;
+	border-radius: 14px;
+}
+
+.jumbotron {
+	background: #1f5588 url("images/sky_bg2.jpg") no-repeat scroll center top;
+    background-size: 100% 100%;
+	padding-bottom: 8px;
+    padding-top: 8px;
+	
+}
+
+.weather-info-box {
+	margin: 0.2em;
+	padding: 0.2em;
+	border: 3px solid gold;
+	border-radius: 4px;
+	background-color: white;
+	max-width: 300px;
+	width: 100%;
+	overflow: auto;
+	text-align: center;
+	font-weight: bold;
+
+}
+
+.weather-label-box {
+	background-color: white;
+	background-color: gold;
+	border-radius: 4px;
+ 	font-weight: bold;
+}
+
+.weather-summary-box {
+	margin: 0.2em;
+	padding: 0.2em;
+	border: 3px solid gold;
+	border-radius: 4px;
+	background-color: white;
+	max-width: 300px;
+	width: 100%;
+	text-align: center;
+}
+
+.weather-icon {
+	width: 100px; 
+	height: 100px;	
+}
+
