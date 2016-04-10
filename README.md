@@ -24,3 +24,15 @@ We are looking for engineers that can lead technology and design decisions witho
 * Fork this repository.
 * Register for a free API key at: https://developer.forecast.io/.
 * Commit your code, and send us a pull request when you are finished.
+
+
+
+#INSTRUCTIONS TO RUN
+
+The code has been developed using NodeJS as the backend api service. 
+There is a `.nvmrc` file in the folder. Please install `nvm` on the machine you are testing. You can ignore this if you are not familiar with NVM. 
+
+Firstly, do an ```npm install ```
+After that ``` node app.js```
+
+Goto, ```http://localhost:3000``` in your browser. It will ask you to allow the location to the app. Click on Allow and that will show the weather at your location. 
