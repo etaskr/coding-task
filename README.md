@@ -1,26 +1,25 @@
-# etaskr Coding Task Guidelines
+# etaskr Coding Task
 
-There's few better ways to assess someone's programming skills than to have them undertake a reasonably open ended coding task. This task is borrowed heavily from https://github.com/Westpac-Mobile/CodingTest, so thank-you to those people for such a great boilerplate. 
+I implemeted the requirements by creating a .NET MVC Website.
 
-Please do not spend more that 2-3 hours on this task. If it takes you much longer than that, there is something fundamentally wrong with your approach.
+Ignoring all the .NET templating bloat, the points of interest are:
+* Content/WeatherIcons/
+* Content/Site.css
+* Controllers/
+* Models/
+* Scripts/CodingTaskScripts/
+* Services/
+* Views/Home/Index.cshtml
 
-## Requirements
+Also for Unit Tests check out the CodingTaskTest Project
 
-The task is to create a basic web application that displays the current temperature using https://forecast.io/ using the geo-location of your browser.
+## Architecture
 
-### Key business requirements
+Using MVC we already get a nice seperation of concerns with the Model, View and Controller. Along side the MVC pattern is also a Service Layer which handles the API calls to Forecast.io.
 
-* Display the current temperature in degrees celsius
-* Display the temperature based on the geolocation of your browser
-* Display a simple icon and label based on the weather information provided (eg. sunny, cloudy, rainy etc).
-* The API request must be proxied via your web application ie. do not make a request from the client side directly to https://developer.forecast.io/ for the weather information. It must go via your localhost app.
+I have used Unity for dependency injection which provides an easy way for injecting in a mock Service layer so that the controller can be unit tested. With some more time I would've liked to have structured the Forecast service in such a way that it could also have automated unit tests covering the functions.
 
-### What we will be looking for in the application
+## Client-side
 
-We are looking for engineers that can lead technology and design decisions without the need for explicit guidance. This is why we are not providing an exact outline of what we are looking for, so we influence your direction on this task as little as possible. We want to see how you work unencumbered and get to know what really matters to you when developing a web application.
-
-## Getting Started
-
-* Fork this repository.
-* Register for a free API key at: https://developer.forecast.io/.
-* Commit your code, and send us a pull request when you are finished.
+For this application I have used jQuery to do a simple GET request to the MVC controller so that the current weather can be retrieved.
+The jQuery script then populates the various fields on the page to display the temperature and summary etc.
