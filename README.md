@@ -26,4 +26,4 @@ I have used Unity for dependency injection which provides an easy way for inject
 For this application I have used jQuery to do a simple GET request to the MVC controller so that the current weather can be retrieved.
 The jQuery script then populates the various fields on the page to display the temperature and summary etc.
 
-I would've liked to have made the UI a lot more snazzy if I had had the time.
+I would've liked to have made the UI a lot more snazzy and also had some more error handling around the Geo Location values if I had had the time.
