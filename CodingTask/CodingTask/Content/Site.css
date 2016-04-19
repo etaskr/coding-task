@@ -1,0 +1,78 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba( 255, 255, 255, .8 ) url('spinner.gif') 50% 50% no-repeat;
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+    body.loading .modal {
+        display: block;
+    }
+
+
+#weatherImg{
+    max-width: 100px;
+    max-height: 100px;
+    min-height: 100px;
+    min-width: 100px;
+    background-size: cover;
+}
+
+.clear-day, 
+.clear-night {
+    background-image: url("WeatherIcons/sunny.png");
+}
+
+.rain {
+    background-image: url("WeatherIcons/rain.png");
+}
+
+.snow,
+.sleet,
+.fog {
+    background-image: url("WeatherIcons/snow.jpg");
+}
+
+.cloudy, 
+.partly-cloudy-day,
+.partly-cloudy-night
+ {
+    background-image: url("WeatherIcons/cloudy.png");
+}
+
+.wind {
+    background-image: url("WeatherIcons/wind.png");
+}
