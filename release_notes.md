@@ -13,6 +13,15 @@ The server is able to fetch the weather info from the API. It handles the possib
 the command line and gives an extensive help if required. The server functionality is encapsulated in a class which is ready for testing. 
 It receives external communication interfaces as arguments so it is unit-testable with mocked dependencies. 
 
+The weather icons are coming from a legal sorurce: http://www.alessioatzeni.com/meteocons. However, they were modified and edited manually.
+Legal comment from the web site: 
+
+> Meteocons is a free weather icon set, it works perfect for apps or your new web project!
+> This set containg 40+ icons available in PSD, CSH, EPS, SVG, Desktop font and Web font.
+> You may use these icons for both commercial and personal projects and customize them any way you like.
+> All icon and updates are FREE!
+
+
 ### Known Issues
 
 - the client is not nice
@@ -20,3 +29,4 @@ It receives external communication interfaces as arguments so it is unit-testabl
 - the client doesn't scale if the user uses a smaller or higher resolution screen
 - the client has no tests
 - the server has no tests
+
