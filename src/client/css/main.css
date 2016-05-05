@@ -1,0 +1,62 @@
+#weather-info {
+	display: none;
+	margin-top: 30px;
+	font-size: 2em;
+}
+button {
+	margin-top: 20px;
+}
+.icon-container {
+	border: 1px solid #ccc;
+	border-radius: 7px;
+	padding: 20px;
+	display: inline-block;
+}
+.icon {
+	width: 96px;
+	height: 96px;
+	display: inline-block; 
+	background-color: #ccf;
+	background: url('../image/sprite_96x96.png'); 
+	background-repeat:  no-repeat;
+	overflow: hidden; 
+	text-indent: -9999px; 
+	text-align: left;
+}
+.clear-day { 
+	background-position: -5px -0px
+}
+.clear-night { 
+	background-position: -106px -0px
+}
+.cloudy {
+	background-position: -207px -0px
+}
+.fog {
+	background-position: -5px -101px
+}
+.partly-cloudy-day {
+	background-position: -207px -101px
+}
+.partly-cloudy-night {
+	background-position: -5px -202px
+}
+.rain { 
+	background-position: -106px -202px;
+}
+.sleet { 
+	background-position: -207px -202px
+}
+.snow { 
+	background-position: -5px -303px
+}
+.wind { 
+	background-position: -106px -303px
+}
+.missing-icon {
+	background-position: -106px -101px
+}
+.spinner {
+	display: none;
+	margin: 5px;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Weather App</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="Weather Display App" />
+		<script type="text/javascript">
+			function communicationStart(button) {
+				document.getElementsByTagName('button')[0].disabled = true;
+				document.getElementById('weather-info').style.display = 'none';
+				document.getElementsByClassName('spinner')[0].style.display = 'inline';
+			}
+			function communicationDone(button) {
+				document.getElementsByTagName('button')[0].disabled = false;
+				document.getElementById('weather-info').style.display = 'block';
+				document.getElementsByClassName('spinner')[0].style.display = 'none';
+				document.getElementsByTagName('button')[0].focus();
+			}
+			function communicationFailed() {
+				document.getElementsByTagName('button')[0].disabled = false;
+				document.getElementsByTagName('button')[0].focus();
+				document.getElementsByClassName('spinner')[0].style.display = 'none';
+			}
+			function getIconClassName(iconName) {
+				var validIcons = ['clear-day', 'clear-night', 'wind', 'fog', 'partly-cloudy-day', 'partly-cloudy-night', 'rain', 'snow', 'cloudy', 'sleet'];
+				return ((validIcons.indexOf(iconName) > -1) ? iconName : 'missing-icon');
+			}
+			function getWeather() {
+				communicationStart();
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function(position) {
+						var xhr = new XMLHttpRequest();
+						xhr.onreadystatechange = function () {
+							if (xhr.readyState === 4) {
+								if (xhr.status === 200) {
+									try {
+										var responseObj = JSON.parse(xhr.responseText);
+										document.getElementsByName('temperature')[0].innerHTML = responseObj.temperature + '°C';
+										var iconClassName = getIconClassName(responseObj.icon || null);
+										document.getElementsByName('icon')[0].className = 'icon ' + iconClassName; 
+										document.getElementsByName('icon')[0].title = iconClassName; 
+									} catch (err) {
+										alert("Error while parsing server response: " + err);
+									}
+								} else {
+									alert('Server Communication Error. StatusCode=' + xhr.status + ', StatusText=' + xhr.statusText);
+								}
+								communicationDone();
+							}
+						};
+						xhr.open('GET', 'http://localhost:9998/' + position.coords.latitude + ',' + position.coords.longitude);
+						xhr.send();
+					}, function(err) {
+						communicationFailed();
+						alert(err.message);
+					});
+				} else {
+					communicationFailed();
+					alert("Geolocation is not supported.");
+				}
+			}
+		</script>
+		<link href="css/main.css" rel="stylesheet" type="text/css">
+	</head>
+	
+	<body>
+		<h1>Weather at Your Location</h1>
+		<div>This app is able to retrieve specific weather information related to your location. Our service is backed by the forecast.io.</div>
+		<button onclick="return getWeather();" autofocus="autofocus">Get Weather Info for My Location</button><span class="spinner"><img src="image/spinner.gif"/></span>
+		
+		<div id="weather-info">
+			<div>Temperature: <span name="temperature"></span></div>
+			<div class="icon-container"><div name="icon" class="icon rain"></div></div>
+		</div>
+	</body>
+
+</html>
