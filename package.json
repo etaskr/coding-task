@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/etaskr/coding-task#readme",
   "dependencies": {
+    "async": "^1.5.2",
     "express": "^4.13.4",
     "jasmine": "^2.4.1",
-    "pug": "^0.1.0"
+    "pug": "^0.1.0",
+    "request": "^2.72.0"
   }
 }
