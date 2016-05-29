@@ -1,8 +1,9 @@
 var express = require('express');
-var request = require('request');
 var async = require('async');
-var app = express();
+
 var api = require('./api');
+
+var app = express();
 
 const api_key = '81ba32c3446a5a4012bd1bda9d074eae';
 const api_url = 'api.forecast.io';
@@ -46,5 +47,5 @@ app.get('/api', function(req, res) {
 });
 
 app.listen(3000, function () {
-  console.log('App listening on port 3000!');
+    console.log('App listening on port 3000!');
 });
