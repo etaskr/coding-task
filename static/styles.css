@@ -1,0 +1,7 @@
+body{
+    font-family: 'Helvetica Nue', Helvetica, sans-serif;
+}
+.content{
+    max-width: 600px;
+    margin: 0 auto;
+}

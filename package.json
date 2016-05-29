@@ -1,0 +1,24 @@
+{
+  "name": "coding-task",
+  "version": "1.0.0",
+  "description": "Display current weather and icon for users location",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etaskr/coding-task.git"
+  },
+  "author": "Hammy Goonan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/etaskr/coding-task/issues"
+  },
+  "homepage": "https://github.com/etaskr/coding-task#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "jasmine": "^2.4.1",
+    "pug": "^0.1.0"
+  }
+}
