@@ -1,6 +1,28 @@
+# Installation
+
+Installation is as easy as
+
+```
+npm install
+```
+
+# Up and running
+
+To get the party started (from the project directory) it is as simple as
+
+```
+npm index.js
+```
+
+# Other comments.
+
+No tests, sorry. As you know I don't really know NodeJS so spent my time getting to know ExpressJS, Async, Request and a bunch of other libraries instead.
+
+I did start to look at [Jasmine](https://jasmine.github.io/) but it was just taking me too long.
+
 # etaskr Coding Task Guidelines
 
-There's few better ways to assess someone's programming skills than to have them undertake a reasonably open ended coding task. This task is borrowed heavily from https://github.com/Westpac-Mobile/CodingTest, so thank-you to those people for such a great boilerplate. 
+There's few better ways to assess someone's programming skills than to have them undertake a reasonably open ended coding task. This task is borrowed heavily from https://github.com/Westpac-Mobile/CodingTest, so thank-you to those people for such a great boilerplate.
 
 Please do not spend more that 2-3 hours on this task. If it takes you much longer than that, there is something fundamentally wrong with your approach.
 

@@ -1,0 +1,11 @@
+body{
+    font-family: 'Helvetica Nue', Helvetica, sans-serif;
+    text-align: center;
+}
+.content{
+    max-width: 600px;
+    margin: 0 auto;
+}
+.error{
+    color: red;
+}
