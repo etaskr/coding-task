@@ -1,0 +1,69 @@
+.left {
+  float: left;
+}
+
+.weather-forecast-currently {
+  text-align: center;
+  height: 100px;
+  width: 100px;
+}
+
+.weather-forecast-currently-temperature {
+  height: 52px;
+  margin-top: 7px;
+}
+
+.weather-icon, .clear-day, .clear-night, .rain, .snow, .sleet, .wind, .fog, .cloudy, .partly-cloudy-day, .partly-cloudy-night, .celsius, .fahrenheit {
+  background-image: url('../img/weather-icons.png');
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+}
+
+.clear-day {
+  background-position: -77px -20px;
+}
+
+.clear-night {
+  background-position: -149px -20px;
+}
+
+.rain {
+  background-position: -365px -164px;
+}
+
+.snow {
+  background-position: -293px -237px;
+}
+
+.sleet {
+  background-position: -365px -237px;
+}
+
+.wind {
+  background-position: -365px -20px;
+}
+
+.fog {
+  background-position: -6px -165px;
+}
+
+.cloudy {
+  background-position: -77px -165px;
+}
+
+.partly-cloudy-day {
+  background-position: -77px -94px;
+}
+
+.partly-cloudy-night {
+  background-position: -149px -94px;
+}
+
+.celsius {
+  background-position: -223px -524px;
+}
+
+.fahrenheit {
+  background-position: -293px -524px;
+}

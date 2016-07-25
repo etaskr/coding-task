@@ -1,0 +1,44 @@
+{
+  "name": "coding-task",
+  "version": "0.0.1",
+  "description": "A Node.js application which shows the current temperature based on current location",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lequhung/coding-task.git"
+  },
+  "author": "Hung Le",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lequhung/coding-task/issues"
+  },
+  "homepage": "https://github.com/lequhung/coding-task#readme",
+  "devDependencies": {
+    "eslint": "^3.1.1",
+    "grunt": "^1.0.1",
+    "grunt-concurrent": "^2.3.0",
+    "grunt-contrib-csslint": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-env": "^0.4.4",
+    "grunt-karma": "^2.0.0",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-node-inspector": "^0.4.2",
+    "grunt-nodemon": "^0.4.2",
+    "grunt-protractor-runner": "^3.2.0",
+    "karma": "^1.1.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "should": "^10.0.0",
+    "supertest": "^1.2.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  }
+}

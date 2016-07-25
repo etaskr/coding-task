@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en-AU" ng-app="app">
+    <head>
+        <meta name="keywords" content="weather,temperature,etaskr">
+        <meta name="description" content="Display current temperature based on current location">
+        <meta charset="UTF-8">
+        <meta name="author" content="Hung Le">
+        <title>Weather - Current Temperature</title>
+
+        <!-- main stylesheet -->
+        <link rel="stylesheet" type="text/css" href="css/site.css">
+
+        <!-- angular libs -->
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular-route/angular-route.min.js"></script>
+
+        <!-- angular app files -->
+        <script src="app.js"></script>
+        <script src="config/config-routes.js"></script>              
+        <script src="controllers/weather.forecast.client.controller.js"></script>
+        <script src="services/geolocation.client.service.js"></script>
+        <script src="services/weather.forecast.client.service.js"></script>
+        <script src="directives/weather.forecast.currently.client.directive.js"></script>
+    </head>
+
+    <body>
+        <!-- app view -->
+        <div ng-view></div>
+    </body>
+</html>

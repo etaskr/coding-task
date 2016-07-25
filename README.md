@@ -1,40 +1,38 @@
-# etaskr Coding Task Guidelines
+# etaskr Coding Task
 
-There's few better ways to assess someone's programming skills than to have them undertake a reasonably open ended coding task. This task is borrowed heavily from https://github.com/Westpac-Mobile/CodingTest, so thank-you to those people for such a great boilerplate. 
+a Node.js application which shows the current temperature based on current location.
 
-Please do not spend more that 2-3 hours on this task. If it takes you much longer than that, there is something fundamentally wrong with your approach.
+## Installation
 
-## Requirements
+* Go to the root of the application folder 
+* Type 'npm install' in the console and press enter to start the installation
 
-The task is to create a basic web application that displays the current temperature using https://forecast.io/ using the geo-location of your browser.
+## Usage
 
-### Key business requirements
+* Open a web browser and go to https://localhost:8082/
 
-* Display the current temperature in degrees celsius
-* Display the temperature based on the geolocation (note; not the IP!) of your browser
-* Display a simple icon and label based on the weather information provided (eg. sunny, cloudy, rainy etc).
-* The API request must be proxied via your web application ie. do not make a request from the client side directly to https://developer.forecast.io/ for the weather information. It must go via your localhost app.
+## Default Environment Variables
 
-### What we will be looking for in the applicant and the application
+Below are the default values for the environment variables. Set them to something else if needed.
 
-We are looking for *engineers* that can lead technology and design decisions without the need for explicit guidance. We value the following:
+* export NODE_ENV=development
+* export NODE_HTTPS_PORT=8082
+* export NODE_FORECAST_API=6759d789feae04ffe702654289b21bff
 
-* SOLID design principles.
-    * Single use, inversion of control, dependency injection et al.
-    * Considered design patterns over spaghetti code. eg. MVC, Pub/Sub, Factory, etc
-* Testable, clean code.
-    * Unit tests.
-    * Integration tests.
-    * Simplicity of setup / mocks for testing.
-* Modular and maintainable code.
-    * Package managers.
-    * Documentation.
-    * Understandability.
-    * Coding standards.
-    * Scalable solutions.
+## SSL (Generating Certificates)
 
-## Getting Started
+Execute commands below if certificates need to be generated
 
-* Fork this repository.
-* Register for a free API key at: https://developer.forecast.io/.
-* Commit your code, and send us a pull request when you are finished.
+ * openssl genrsa -des3 -out server.enc.key 1024
+ * openssl req -new -key server.enc.key -out server.csr
+ * openssl rsa -in server.enc.key -out server.key
+ * openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+
+## To-Do
+
+* There are some issues when runing unit tests for the front-end
+* Creat some E2E tests
+* Create Grunt tasks to minify/concat css/js files
+* Create Grunt tasks to compile the scss files
+* Create Grunt tasks for automating testsing processes
+* Create Grunt tasks for validating css/js files
