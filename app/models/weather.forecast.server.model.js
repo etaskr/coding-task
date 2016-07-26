@@ -11,11 +11,19 @@ var request = require('request'),
  * 
  */
 class WeatherForecast {
-    constructor(APIKey, requestTimeout, isCompressedResponse) {
+    constructor(APIKey, requestTimeout, dataCompressed) {
         this._APIKey = APIKey;
         this._requestTimeout = requestTimeout || 8000;
-        this._isCompressedResponse = isCompressedResponse;
+        this._dataCompressed = dataCompressed || false;
         this._url = 'https://api.forecast.io/forecast/' + APIKey + '/';
+    }
+
+    get dataCompressed () {
+        return this._dataCompressed;
+    }
+
+    set dataCompressed (dataCompressed) {
+        this._dataCompressed = dataCompressed;
     }
 
     /**
@@ -26,23 +34,24 @@ class WeatherForecast {
      * @param  {Object}     options
      * @param  {Function}   callback
      */
-    fetch (latitude, longitude, options, callback) {
-        let queryStringOptions = qs.stringify(options);
-        this._url += latitude + ',' + longitude + '?' + queryStringOptions;
-
+    fetch(latitude, longitude, options, callback) {
         let self = this;
+
+        let queryStringOptions = qs.stringify(options);
+        self._url += latitude + ',' + longitude + '?' + queryStringOptions;
+
         let headers = {};
 
-        if (this._isCompressedResponse) {
+        if (self._dataCompressed) {
             headers = { 'Accept-Encoding': 'gzip' };
         }
 
         request.get({
             headers: headers,
             encoding: null,
-            uri: this._url, 
-            timeout: this.requestTimeout
-        },function (err, res, data) {
+            uri: self._url, 
+            timeout: self.requestTimeout
+        },function(err, res, data) {
             if(!err && res.statusCode === 200) {
                 let reponseHeaders = res.headers['content-encoding'];
 
@@ -67,7 +76,7 @@ class WeatherForecast {
         });
     }
 
-    convertWeatherForecastDataToWeatherModel (weatherForecastData) {
+    convertWeatherForecastDataToWeatherModel(weatherForecastData) {
         let weather = new Weather();
 
         weather._icon = weatherForecastData.currently.icon;

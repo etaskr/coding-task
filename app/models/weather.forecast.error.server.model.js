@@ -4,12 +4,12 @@
  * WeatherForecastError class
  */
 class WeatherForecastError extends Error {
-    constructor (errors) {
+    constructor(errors) {
         super(errors);
         this._errors = errors;
     }
 
-    get errors () {
+    get errors() {
         return this._errors;
     }
 }

@@ -2,15 +2,21 @@
   float: left;
 }
 
+.weather-forecast-summary {
+  font-weight: lighter;
+}
+
 .weather-forecast-currently {
   text-align: center;
   height: 100px;
-  width: 100px;
+  width: 105px;
 }
 
 .weather-forecast-currently-temperature {
   height: 52px;
   margin-top: 7px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .weather-icon, .clear-day, .clear-night, .rain, .snow, .sleet, .wind, .fog, .cloudy, .partly-cloudy-day, .partly-cloudy-night, .celsius, .fahrenheit {

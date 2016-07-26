@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lequhung/coding-task#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
     "eslint": "^3.1.1",
     "grunt": "^1.0.1",
     "grunt-concurrent": "^2.3.0",

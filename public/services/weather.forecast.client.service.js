@@ -22,13 +22,16 @@ function weatherForecastService($http) {
     /**
      * get current weather data
      */
-    function getCurrent(request)
-    {
+    function getCurrent(request) {
         return $http.get('/api/WeatherForecast/Current', { params: request })
             .then(getCurrentComplete)
             .catch(getCurrentFailed);
 
         function getCurrentComplete(response) {
+            if (response.data._error) {
+                console.log(response.data._error);
+            }
+
             return response.data;
         }
 

@@ -1,3 +1,4 @@
 module.exports = {
-    // configurations for prod env
+    sslKey: __dirname + '/../certificates/server.key',
+    sslCert: __dirname + '/../certificates/server.crt'
 };

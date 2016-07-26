@@ -1,5 +1,5 @@
 <div class="weather-forecast-currently" ng-if="vm.forecastData && !vm.forecastData._errors">
-    <div ng-bind="vm.forecastData._summary" show-summary="vm.showSummary"></div>
+    <div class="weather-forecast-summary" ng-bind="vm.forecastData._summary" show-summary="vm.showSummary"></div>
     <div class="left" ng-class="vm.forecastData._icon" show-icon="vm.showIcon"></div>
     <div class="weather-forecast-currently-temperature">
         <div ng-bind="vm.forecastData._temperature"></div>

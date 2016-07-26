@@ -1,7 +1,5 @@
 // load modules
 var config = require('./config'),
-    Utilities = require('../app/models/utilities.server.model'),
-    https = require('https'),
     express = require('express'),
     compress = require('compression'),
     morgan = require('morgan'),
@@ -32,8 +30,5 @@ module.exports = function() {
     // load the rounting files
     require('../app/routes/weather.forecast.server.routes')(app);
 
-    // initialse an express https server
-    var httpsServer = https.createServer(Utilities.getSslCertificate(), app);
-
-    return httpsServer;
+    return app;
 };
