@@ -5,10 +5,12 @@ a Node.js application which shows the current temperature based on current locat
 ## Installation
 
 * Go to the root of the application folder 
-* Type 'npm install' in the console and press enter to start the installation
+* Type 'npm install' to install back-end libs
+* Type 'bower update' to install front-end libs
 
 ## Usage
 
+* Type 'node server' to start the web server
 * Open a web browser and go to https://localhost:8082/
 
 ## Default Environment Variables
