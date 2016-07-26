@@ -2,7 +2,7 @@ describe('Testing Weather Forecast Service', function () {
     var _weatherForecastService;
 
     beforeEach(function () {
-        module('coding-task');
+        module('app');
 
         inject(function (weatherForecastService) {
             _weatherForecastService = weatherForecastService;
@@ -13,7 +13,7 @@ describe('Testing Weather Forecast Service', function () {
         expect(_weatherForecastService).toBeDefined();
     });
 
-    it('Should include $http methods', function () {
-        expect(_weatherForecastService.getCurrentLocation).toBeDefined();
+    it('Should have the method to get current weather data', function () {
+        expect(_weatherForecastService.getCurrent).toBeDefined();
     });
 });

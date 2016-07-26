@@ -19,11 +19,13 @@ function WeatherForecastController(weatherForecastService, geolocationService) {
     vm.degree = "c";
     vm.showSummary = true;
     vm.showIcon = true;
-    vm.currentWeatherData = null;    
+    vm.currentWeatherData = null;
+    vm.getCurrentWeather = getCurrentWeather;
+    vm.getGeolocation = getGeolocation;
 
-    init();
+    getGeolocation();
 
-    function init()
+    function getGeolocation()
     {
         geolocationService.getCurrentLocation()
             .then(getCurrentWeather)

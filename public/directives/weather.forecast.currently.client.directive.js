@@ -18,21 +18,13 @@ function weatherForecastCurrently() {
             degree: '=',
             showIcon: '=',
             showSummary: '='
-        },
-        controller: WeatherForecastCurrentlyController,
-        controllerAs: 'vm',
-        bindToController: true
+        }
     };
 
     return directive;
 
     function link(scope, element, attrs) {
     }
-}
-/**
- * A directive controller
- */
-function WeatherForecastCurrentlyController() {
 }
 
 })(window.angular);
