@@ -1,5 +1,6 @@
 // load modules
 var config = require('./config'),
+    Utilities = require('../app/models/utilities.server.model'),
     https = require('https'),
     express = require('express'),
     compress = require('compression'),
@@ -32,7 +33,7 @@ module.exports = function() {
     require('../app/routes/weather.forecast.server.routes')(app);
 
     // initialse an express https server
-    var httpsServer = https.createServer(config.getSSL(), app);
+    var httpsServer = https.createServer(Utilities.getSslCertificate(), app);
 
     return httpsServer;
 };

@@ -30,6 +30,7 @@ class WeatherForecast {
         let queryStringOptions = qs.stringify(options);
         this._url += latitude + ',' + longitude + '?' + queryStringOptions;
 
+        let self = this;
         let headers = {};
 
         if (this._isCompressedResponse) {
@@ -50,7 +51,7 @@ class WeatherForecast {
                     // decompressing the gzip data 
                     zlib.gunzip(data, function(error, uncompressedData) {
                         if (!error) {
-                            callback(null, res, new Weather(JSON.parse(uncompressedData)));
+                            callback(null, res, self.convertWeatherForecastDataToWeatherModel(JSON.parse(uncompressedData)));
                         }
                         else {
                             callback(new WeatherForecastError(error), res, null);
@@ -58,12 +59,22 @@ class WeatherForecast {
                     });
                 }
                 else {
-                    callback(null, res, new Weather(JSON.parse(data)));
+                    callback(null, res, self.convertWeatherForecastDataToWeatherModel(JSON.parse(data)));
                 }
             } else {
                 callback(new WeatherForecastError(err), res, null);
             }
         });
+    }
+
+    convertWeatherForecastDataToWeatherModel (weatherForecastData) {
+        let weather = new Weather();
+
+        weather._icon = weatherForecastData.currently.icon;
+        weather._summary = weatherForecastData.currently.summary;
+        weather._temperature = weatherForecastData.currently.temperature;
+
+        return weather;
     }
 }
 

@@ -12,10 +12,6 @@ class WeatherForecastError extends Error {
     get errors () {
         return this._errors;
     }
-
-    // set errors (errors) {
-    //     return this.errors = errors;
-    // }
 }
 
 module.exports = WeatherForecastError;
