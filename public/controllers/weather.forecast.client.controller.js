@@ -37,7 +37,7 @@ function WeatherForecastController(weatherForecastService, geolocationService) {
         var request = {
             latitude: locationData.coords.latitude,
             longitude: locationData.coords.longitude,
-            options: { units: 'ca' }
+            options: { units: 'ca', exclude: 'minutely,hourly,daily,alerts,flags' }
         };
 
         return weatherForecastService.getCurrent(request)
