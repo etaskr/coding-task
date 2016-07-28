@@ -5,7 +5,7 @@ angular
     .module('app')
     .controller('WeatherForecastController', WeatherForecastController);
 
-WeatherForecastController.$inject = ['weatherForecastService', 'geolocationService'];
+WeatherForecastController.$inject = ['weatherForecastService', 'geolocationService', 'WEATHER_FORECAST'];
 
 /**
  * A weather forecast controller
@@ -13,15 +13,16 @@ WeatherForecastController.$inject = ['weatherForecastService', 'geolocationServi
  * @param  {Object} weatherForecastService
  * @param  {Object} geolocationService
  */
-function WeatherForecastController(weatherForecastService, geolocationService) {
+function WeatherForecastController(weatherForecastService, geolocationService, WEATHER_FORECAST) {
     var vm = this;
 
-    vm.degree = "c";
-    vm.showSummary = true;
-    vm.showIcon = true;
     vm.currentWeatherData = null;
+    vm.degree = WEATHER_FORECAST.degree;
     vm.getCurrentWeather = getCurrentWeather;
     vm.getGeolocation = getGeolocation;
+    vm.showSummary = true;
+    vm.showIcon = true;
+    vm.WEATHER_FORECAST = WEATHER_FORECAST;
 
     getGeolocation();
 
@@ -39,7 +40,7 @@ function WeatherForecastController(weatherForecastService, geolocationService) {
         var request = {
             latitude: locationData.coords.latitude,
             longitude: locationData.coords.longitude,
-            options: { units: 'ca', exclude: 'minutely,hourly,daily,alerts,flags' }
+            options: { units: WEATHER_FORECAST.units, exclude: WEATHER_FORECAST.excludeOthersButCurrently }
         };
 
         return weatherForecastService.getCurrent(request)

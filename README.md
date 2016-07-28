@@ -32,8 +32,7 @@ Execute commands below if certificates need to be generated
 
 ## To-Do
 
-* There are some issues when runing unit tests for the front-end
-* Creat some E2E tests
+* Creat some more E2E tests
 * Create Grunt tasks to minify/concat css/js files
 * Create Grunt tasks to compile the scss files
 * Create Grunt tasks for automating testsing processes
