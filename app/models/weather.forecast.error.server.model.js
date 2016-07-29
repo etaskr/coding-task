@@ -1,3 +1,4 @@
+(function() {
 "use strict";
 
 /**
@@ -15,3 +16,5 @@ class WeatherForecastError extends Error {
 }
 
 module.exports = WeatherForecastError;
+
+})();

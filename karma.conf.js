@@ -7,19 +7,11 @@ module.exports = function (config) {
             'public/lib/angular-mocks/angular-mocks.js',
             'public/app.js',
             'public/*[!lib]*/*.js',
-            'public/*[!lib]*/*[!tests]*/*.js'
+            'public/tests/unit/*.js'
         ],
         reporters: ['progress'],
         browsers: ['PhantomJS'],
         captureTimeout: 60000,
         singleRun: true
-        // preprocessors: {
-        //     "public/directives/**/*.html": ["ng-html2js"]
-        // },
-        // ngHtml2JsPreprocessor: {
-        //     stripPrefix: "public/directives/.*/",
-        //     prependPrefix: "directives/",
-        //     moduleName: "app"
-        // }
     });
 };

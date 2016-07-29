@@ -5,19 +5,19 @@ a Node.js application which shows the current temperature based on current locat
 ## Installation
 
 * Go to the root of the application folder 
-* Type 'npm install' to install back-end libs
-* Type 'bower update' to install front-end libs
+* Type 'npm install' to start the installation
 
 ## Usage
 
-* Type 'node server' to start the web server
-* Open a web browser and go to https://localhost:8082/
+* Type 'node server' to start the app
+* Open a web browser and go to http://localhost:8081/ (works with all browsers except Chrome) or https://localhost:8082/ (works with all browsers including Chrome)
 
 ## Default Environment Variables
 
 Below are the default values for the environment variables. Set them to something else if needed.
 
 * export NODE_ENV=development
+* export NODE_HTTP_PORT=8081
 * export NODE_HTTPS_PORT=8082
 * export NODE_FORECAST_API=6759d789feae04ffe702654289b21bff
 
@@ -34,6 +34,3 @@ Execute commands below if certificates need to be generated
 
 * Creat some more E2E tests
 * Create Grunt tasks to minify/concat css/js files
-* Create Grunt tasks to compile the scss files
-* Create Grunt tasks for automating testsing processes
-* Create Grunt tasks for validating css/js files

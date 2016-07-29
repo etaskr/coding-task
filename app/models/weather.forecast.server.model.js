@@ -1,3 +1,4 @@
+(function() {
 "use strict";
 
 var request = require('request'),
@@ -88,3 +89,5 @@ class WeatherForecast {
 }
 
 module.exports = WeatherForecast;
+
+})();

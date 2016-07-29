@@ -1,23 +1,29 @@
+/*jshint expr: true*/
+
 var app = require('../../server.js'),
-    should = require('should'),
+    chai = require('chai'),
     WeatherForecast = require('../models/weather.forecast.server.model');
+
+var expect = chai.expect,
+    should = chai.should();
 
 var forecast;
 
-describe('Forecast model unit tests:', function () {
+describe('Weather forecast model unit tests:', function () {
+    this.timeout(10000);
+
     beforeEach(function (done) {
         forecast = new WeatherForecast(process.env.NODE_FORECAST_API, 8000);
         done();
     });
 
-    describe('Testing the fetch weather data method', function () {
-        this.timeout(10000);
+    describe('Testing the fetch current weather data method', function () {
 
         it('Should be able to fetch data without any error', function (done) {
             forecast.dataCompressed = false;
 
             forecast.fetch('-37.9006677', '145.0989646', {}, function (err, res, data){
-                should.not.exist(err);
+                expect(err).to.not.exist;
                 done();
             });
         });
@@ -26,7 +32,7 @@ describe('Forecast model unit tests:', function () {
             forecast.dataCompressed = true;
 
             forecast.fetch('-37.9006677', '145.0989646', {}, function (err, res, data){
-                should.not.exist(err);
+                expect(err).to.not.exist;
                 done();
             });
         });
@@ -35,7 +41,7 @@ describe('Forecast model unit tests:', function () {
             forecast.dataCompressed = false;
 
             forecast.fetch('-37.8141', '144.9633', {}, function (err, res, data){
-                should.exist(data);
+                expect(data).to.exist;
                 done();
             });
         });
@@ -44,18 +50,19 @@ describe('Forecast model unit tests:', function () {
             forecast.dataCompressed = true;
 
             forecast.fetch('-37.8141', '144.9633', {}, function (err, res, data){
-                should.exist(data);
+                expect(data).to.exist;
                 done();
             });
         });
 
-        it('Should be able to receive icon, summary and temperature', function (done) {
+        it('Should have property icon, summary and temperature', function (done) {
             forecast.dataCompressed = true;
 
             forecast.fetch('-37.8141', '144.9633', {}, function (err, res, data){
-                should.exist(data.icon);
-                should.exist(data.summary);
-                should.exist(data.temperature);
+                expect(data).to.have.property('_icon');
+                expect(data).to.have.property('_summary');
+                expect(data).to.have.property('_temperature');
+
                 done();
             });
         });

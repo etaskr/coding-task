@@ -1,3 +1,4 @@
+(function() {
 "use strict";
 
 var fs = require('fs'),
@@ -17,3 +18,5 @@ class Utilities {
 }
 
 module.exports = Utilities;
+
+})();

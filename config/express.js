@@ -15,7 +15,7 @@ module.exports = function() {
     } else if (process.env.NODE_ENV === 'development') {
         app.use(morgan('dev'));
     } else {
-        app.use(morgan('dev'));
+        app.use(morgan('test'));
     }
 
     app.use(bodyParser.urlencoded({

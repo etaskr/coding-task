@@ -1,3 +1,4 @@
+(function() {
 "use strict";
 
 /**
@@ -48,3 +49,5 @@ function getCurrent(req, res) {
 module.exports = {
     getCurrent: getCurrent
 };
+
+})();

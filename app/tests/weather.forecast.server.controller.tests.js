@@ -1,3 +1,5 @@
+/*jshint expr: true*/
+
 var app = require('../../server.js'),
     request = require('supertest'),
     chai = require('chai'),

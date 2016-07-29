@@ -19,6 +19,6 @@ function configApp($routeProvider) {
             redirectTo: '/'
         });
 
-};
+}
 
 })(window.angular);

@@ -4,7 +4,9 @@
   "description": "A Node.js application which shows the current temperature based on current location",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server",
+    "install": "npm install && bower update",
+    "test": "mocha app/tests && karma start"
   },
   "repository": {
     "type": "git",
@@ -23,14 +25,11 @@
     "grunt-concurrent": "^2.3.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-csslint": "^1.0.0",
     "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-htmlmin": "^2.0.0",
-    "grunt-contrib-imagemin": "^1.0.1",
-    "grunt-contrib-jasmine": "^1.0.3",
-    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
@@ -43,9 +42,8 @@
     "grunt-protractor-runner": "^3.2.0",
     "karma": "^1.1.1",
     "karma-jasmine": "^1.0.2",
-    "karma-ng-html2js-preprocessor": "^1.0.0",
     "karma-phantomjs-launcher": "^1.0.1",
-    "should": "^10.0.0",
+    "mocha": "^2.5.3",
     "supertest": "^1.2.0"
   },
   "dependencies": {
