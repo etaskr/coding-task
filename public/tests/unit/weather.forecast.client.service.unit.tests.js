@@ -14,6 +14,6 @@ describe('Testing Weather Forecast Service', function () {
     });
 
     it('Should have the method to get current weather data', function () {
-        expect(_weatherForecastService.getCurrent).toBeDefined();
+        expect(_weatherForecastService.fetch).toBeDefined();
     });
 });

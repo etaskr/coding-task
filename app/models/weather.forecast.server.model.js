@@ -12,19 +12,9 @@ var request = require('request'),
  * 
  */
 class WeatherForecast {
-    constructor(APIKey, requestTimeout, dataCompressed) {
+    constructor(APIKey, requestTimeout) {
         this._APIKey = APIKey;
         this._requestTimeout = requestTimeout || 8000;
-        this._dataCompressed = dataCompressed || false;
-        this._url = 'https://api.forecast.io/forecast/' + APIKey + '/';
-    }
-
-    get dataCompressed () {
-        return this._dataCompressed;
-    }
-
-    set dataCompressed (dataCompressed) {
-        this._dataCompressed = dataCompressed;
     }
 
     /**
@@ -37,21 +27,20 @@ class WeatherForecast {
      */
     fetch(latitude, longitude, options, callback) {
         let self = this;
-
-        let queryStringOptions = qs.stringify(options);
-        self._url += latitude + ',' + longitude + '?' + queryStringOptions;
-
         let headers = {};
 
-        if (self._dataCompressed) {
+        if (typeof options !== 'undefined' && options !== null &&
+            typeof options.compressed !== 'undefined' && options.compressed) {
             headers = { 'Accept-Encoding': 'gzip' };
         }
+
+        let url = self.buildUrl(latitude, longitude, options);
 
         request.get({
             headers: headers,
             encoding: null,
-            uri: self._url, 
-            timeout: self.requestTimeout
+            uri: url, 
+            timeout: self._requestTimeout
         },function(err, res, data) {
             if(!err && res.statusCode === 200) {
                 let reponseHeaders = res.headers['content-encoding'];
@@ -75,6 +64,38 @@ class WeatherForecast {
                 callback(new WeatherForecastError(err), res, null);
             }
         });
+    }
+
+    buildUrl(latitude, longitude, options) {
+        let url = 'https://api.forecast.io/forecast/' + this._APIKey + '/' + latitude + ',' + longitude;
+        
+        if (typeof options !== 'undefined' && options !== null) {
+            let units = '';
+            let exclude = '';
+
+            if (typeof options.unit !== 'undefined' && options.unit !== null) {
+                units = '?units=' + options.unit;
+            }
+
+            if (units !== '') {
+                url += units;
+            }
+
+            if (typeof options.exclude !== 'undefined' && options.exclude !== null) {
+                exclude = 'exclude=' + options.exclude.join();
+            }
+
+            if (exclude !== '') {
+                if (units !== '') {
+                    url += '&' + exclude;
+                }
+                else {
+                    url += '?' + exclude;
+                }
+            }
+        }
+
+        return url;        
     }
 
     convertWeatherForecastDataToWeatherModel(weatherForecastData) {

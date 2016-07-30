@@ -46,12 +46,6 @@ module.exports = function (grunt) {
         }
       }
     },
-    eslint: {
-      options: {
-        configFile: '.eslintrc.json'
-      },
-      target: ['server.js', 'config/**/*.js', 'app/**/*.js', 'public/*[!lib]*/*.js']
-    },
     jshint: {
       options: {
         esversion: 6
@@ -62,7 +56,7 @@ module.exports = function (grunt) {
     },
     csslint: {
       all: {
-        src: 'public/css/**/*.css'
+        src: ['public/css/**/*.css']
       }
     },
     watch: {
@@ -71,12 +65,16 @@ module.exports = function (grunt) {
         tasks: ['jshint']
       },
       css: {
-        files: 'public/css/**/*.css',
+        files: ['public/css/**/*.css'],
         tasks: ['csslint']
       },
       scss: {
-        files: 'public/css/scss/**/*.scss',
+        files: ['public/css/scss/**/*.scss'],
         tasks: ['sass']
+      },
+      cc: {
+        files: ['!public/application.js', 'public/*[!tests]*/**/*.js', 'public/*[!lib]*/**/*.js'],
+        tasks: ['concat']
       }
     },
     concurrent: {
@@ -106,6 +104,22 @@ module.exports = function (grunt) {
           ext: '.css'
         }]
       }
+    },
+    concat: {
+      libs: {
+        options: {
+          separator: '\n',
+        },
+        src: ['public/lib/angular/angular.js', 'public/lib/angular-route/angular-route.js'],
+        dest: 'public/lib/libraries.js',
+      },
+      app: {
+        options: {
+          separator: '\n',
+        },
+        src: ['public/config/*.js', 'public/controllers/*.js', 'public/directives/*.js', 'public/services/*.js'],
+        dest: 'public/application.js',
+      },
     }
   });
 
@@ -114,17 +128,18 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-protractor-runner');
-  grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-node-inspector');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['env:dev', 'lint', 'concurrent:dev']);
+  grunt.registerTask('default', ['env:dev', 'lint', 'compile', 'concurrent:dev']);
   grunt.registerTask('debug', ['env:dev', 'lint', 'concurrent:debug']);
   grunt.registerTask('unit-test', ['env:dev', 'mochaTest', 'karma']);
   grunt.registerTask('e2e-test', ['env:dev', 'protractor']);
   grunt.registerTask('lint', ['jshint', 'csslint']);
+  grunt.registerTask('compile', ['sass', 'concat']);
 };

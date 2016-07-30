@@ -3,10 +3,18 @@
 
 angular
     .module('app')
-    .constant('WEATHER_FORECAST', {
-        units: 'ca',
+    .value('weatherForecastConfig', {
+        unit: 'ca',
         degree: 'c',
-        excludeOthersButCurrently: 'minutely,hourly,daily,alerts,flags'
+        compressed: true
+    })
+    .constant('WEATHER_FORECAST_DATA', {
+        currently: 'currently',
+        minutely: 'minutely',
+        hourly: 'hourly',
+        daily: 'daily',
+        alerts: 'alerts',
+        flags: 'flags'
     });
 
 })(window.angular);

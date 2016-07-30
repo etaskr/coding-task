@@ -17,7 +17,7 @@ describe('Weather Forecast controller unit tests:', function () {
 
     describe('Testing GET current weather data method ', function () {
         it('Should be able to get the current weather data', function (done) {
-            request(app).get('/api/WeatherForecast/Current?latitude=-37.9006677&longitude=145.0989646')
+            request(app).get('/api/WeatherForecast?latitude=-37.9006677&longitude=145.0989646')
                 .set('Accept', 'application/json')
                 .expect(200)
                 .end(function (err, res) {
@@ -36,7 +36,7 @@ describe('Weather Forecast controller unit tests:', function () {
         });
 
         it('Should be able to not get the current weather data due to no longitude supplied', function (done) {
-            request(app).get('/api/WeatherForecast/Current?latitude=-37.9006677')
+            request(app).get('/api/WeatherForecast?latitude=-37.9006677')
                 .set('Accept', 'application/json')
                 .expect(200)
                 .end(function (err, res) {
@@ -54,7 +54,7 @@ describe('Weather Forecast controller unit tests:', function () {
         });
 
         it('Should be able to not get the current weather data due to no latidue supplied', function (done) {
-            request(app).get('/api/WeatherForecast/Current?longitude=145.0989646')
+            request(app).get('/api/WeatherForecast?longitude=145.0989646')
                 .set('Accept', 'application/json')
                 .expect(200)
                 .end(function (err, res) {

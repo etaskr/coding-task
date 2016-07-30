@@ -14,16 +14,13 @@ weatherForecastService.$inject = ['$http'];
  */
 function weatherForecastService($http) {
     var service = {
-        getCurrent: getCurrent
+        fetch: fetch
     };
 
     return service;
 
-    /**
-     * get current weather data
-     */
-    function getCurrent(request) {
-        return $http.get('/api/WeatherForecast/Current', { params: request })
+    function fetch(request) {
+        return $http.get('/api/WeatherForecast', { params: request })
             .then(getCurrentComplete)
             .catch(getCurrentFailed);
 
@@ -36,7 +33,7 @@ function weatherForecastService($http) {
         }
 
         function getCurrentFailed(error) {
-            console.log('Failed to get the current weather data. ' + error.data);
+            console.log('Failed to get the weather data. ' + error.data);
         }
     }
 }

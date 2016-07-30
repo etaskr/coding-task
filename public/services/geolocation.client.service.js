@@ -10,7 +10,8 @@ geolocationService.$inject = ['$q', '$window'];
 /**
  * a geolocation service
  * 
- * @param  {Object} 
+ * @param  {Object} $q
+ * @param  {Object} $window 
  */
 function geolocationService($q, $window) {
     var service = {
@@ -19,11 +20,7 @@ function geolocationService($q, $window) {
 
     return service;
 
-    /**
-     * get current loation
-     */
-    function getCurrentLocation()
-    {
+    function getCurrentLocation() {
         var deferred = $q.defer();
 
         if ($window.navigator.geolocation) {

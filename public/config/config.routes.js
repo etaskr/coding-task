@@ -3,9 +3,9 @@
 
 angular
     .module('app')
-    .config(configApp);
+    .config(configRoute);
 
-function configApp($routeProvider) {
+function configRoute($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'views/weather.forecast.html',
