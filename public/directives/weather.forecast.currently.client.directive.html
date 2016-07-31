@@ -1,17 +1,9 @@
-<div class="weather-forecast-currently" ng-if="forecastData && !forecastData._errors">
-    <div class="weather-forecast-summary" ng-bind="forecastData._summary" ng-show="showSummary"></div>
-    <div class="left" ng-class="forecastData._icon" ng-show="showIcon"></div>
+<div class="weather-forecast-currently">
+    <div class="weather-forecast-summary" ng-bind="summary" ng-show="showSummary"></div>
+    <div class="left" ng-class="icon" ng-show="showIcon"></div>
     <div class="weather-forecast-currently-temperature">
-        <div ng-bind="forecastData._temperature"></div>
-        <span ng-if="forecastData._degree === 'c'"> &#x2103;</span>
-        <span ng-if="forecastData._degree === 'f'"> &#x2109;</span>
+        <div ng-bind="temperature"></div>
+        <span ng-if="degreeUnit === 'c'"> &#x2103;</span>
+        <span ng-if="degreeUnit === 'f'"> &#x2109;</span>
     </div>
-</div>
-
-<div ng-if="!forecastData">
-    <p>Loading...</p>
-</div>
-
-<div ng-if="forecastData._errors">
-    <p>Weather these days is so unpredictable. Please come back and try again later.</p>
 </div>

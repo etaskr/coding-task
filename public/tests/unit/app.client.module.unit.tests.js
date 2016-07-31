@@ -1,11 +1,13 @@
 describe('Testing App Main Module', function () {
-    var mainModule;
 
-    beforeEach(function () {
-        mainModule = angular.module('app');
+    beforeEach(function () {        
     });
     
     it('Should be registered', function () {
-        expect(mainModule).toBeDefined();
+        expect(angular.module('app')).toBeDefined();
+    });
+
+    it('Should be registered', function () {
+        expect(angular.module('weatherForecast')).toBeDefined();
     });
 });

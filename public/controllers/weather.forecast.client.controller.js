@@ -2,7 +2,7 @@
   'use strict';
 
 angular
-    .module('app')
+    .module('weatherForecast')
     .controller('WeatherForecastController', WeatherForecastController);
 
 WeatherForecastController.$inject = ['weatherForecastService', 'geolocationService', 'weatherForecastConfig', 'WEATHER_FORECAST_DATA'];
@@ -17,15 +17,19 @@ WeatherForecastController.$inject = ['weatherForecastService', 'geolocationServi
 function WeatherForecastController(weatherForecastService, geolocationService, weatherForecastConfig, WEATHER_FORECAST_DATA) {
     var vm = this;
 
-    vm.currentWeatherData = null;
-    vm.getCurrentWeather = getCurrentWeather;
-    vm.getGeolocation = getGeolocation;
-    vm.showSummary = true;
+    vm.degreeUnit = '';
+    vm.icon = '';
     vm.showIcon = true;
+    vm.showSummary = true;
+    vm.summary = '';
+    vm.temperature = '';
 
-    getGeolocation();
+    vm.getGeolocationAndFetchCurrentWeatherData = getGeolocationAndFetchCurrentWeatherData;
+    vm.getCurrentWeather = getCurrentWeather;
+    
+    getGeolocationAndFetchCurrentWeatherData();
 
-    function getGeolocation()
+    function getGeolocationAndFetchCurrentWeatherData()
     {
         geolocationService.getCurrentLocation()
             .then(getCurrentWeather)
@@ -53,7 +57,10 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
 
         return weatherForecastService.fetch(request)
             .then(function(data) {
-                vm.currentWeatherData = data;
+                vm.icon = data._currently._icon;
+                vm.summary = data._currently._summary;
+                vm.temperature = data._currently._temperature;
+                vm.degreeUnit = data._currently._degreeUnit;
             })
             .catch(function(error) {
                 alert(error);

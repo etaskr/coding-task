@@ -2,7 +2,7 @@
   'use strict';
 
 angular
-    .module('app')
+    .module('weatherForecast')
     .directive('weatherForecastCurrently', weatherForecastCurrently);
 
 /**
@@ -14,9 +14,12 @@ function weatherForecastCurrently() {
         restrict: 'EA',
         link: link,
         scope: {
-            forecastData: '=',
+            summary: '=',
+            icon: '=',
+            temperature: '=',
             showIcon: '=',
-            showSummary: '='
+            showSummary: '=',
+            degreeUnit: '='
         }
     };
 

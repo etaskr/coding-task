@@ -8,6 +8,7 @@ angular
 function configRoute($routeProvider) {
     $routeProvider
         .when('/', {
+            title: 'Current Temperature',
             templateUrl: 'views/weather.forecast.html',
             controller: 'WeatherForecastController',
             controllerAs: 'vm',

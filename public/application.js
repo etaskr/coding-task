@@ -3,7 +3,13 @@
 
 angular
     .module('app', [
-        'ngRoute'
+        'ngRoute',
+        'angularSpinner',
+        'weatherForecast'
+    ]);
+
+angular
+    .module('weatherForecast', [
     ]);
 
 })(window.angular);
@@ -17,6 +23,7 @@ angular
 function configRoute($routeProvider) {
     $routeProvider
         .when('/', {
+            title: 'Current Temperature',
             templateUrl: 'views/weather.forecast.html',
             controller: 'WeatherForecastController',
             controllerAs: 'vm',
@@ -36,6 +43,40 @@ function configRoute($routeProvider) {
 
 angular
     .module('app')
+    .run(configRun);
+
+function configRun($rootScope, $http, usSpinnerService) {
+    
+    setPageTitle();
+    toggleLoadingSpinner();
+
+    function setPageTitle() {
+        $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+            $rootScope.title = current.$$route.title;
+        });
+    }
+
+    function toggleLoadingSpinner() {
+        $rootScope.isLoading = function () {
+            return $http.pendingRequests.length > 0;
+        };
+
+        $rootScope.$watch($rootScope.isLoading, function (loading) {
+            if (loading) {
+                usSpinnerService.spin('pageSpinner');
+            } else {
+                usSpinnerService.stop('pageSpinner');
+            }
+        });
+    }
+}
+
+})(window.angular);
+(function(angular) {
+  'use strict';
+
+angular
+    .module('weatherForecast')
     .value('weatherForecastConfig', {
         unit: 'auto', // us, ca, si, uk2, auto
         compressed: true,
@@ -55,7 +96,7 @@ angular
   'use strict';
 
 angular
-    .module('app')
+    .module('weatherForecast')
     .controller('WeatherForecastController', WeatherForecastController);
 
 WeatherForecastController.$inject = ['weatherForecastService', 'geolocationService', 'weatherForecastConfig', 'WEATHER_FORECAST_DATA'];
@@ -70,15 +111,19 @@ WeatherForecastController.$inject = ['weatherForecastService', 'geolocationServi
 function WeatherForecastController(weatherForecastService, geolocationService, weatherForecastConfig, WEATHER_FORECAST_DATA) {
     var vm = this;
 
-    vm.currentWeatherData = null;
-    vm.getCurrentWeather = getCurrentWeather;
-    vm.getGeolocation = getGeolocation;
-    vm.showSummary = true;
+    vm.degreeUnit = '';
+    vm.icon = '';
     vm.showIcon = true;
+    vm.showSummary = true;
+    vm.summary = '';
+    vm.temperature = '';
 
-    getGeolocation();
+    vm.getGeolocationAndFetchCurrentWeatherData = getGeolocationAndFetchCurrentWeatherData;
+    vm.getCurrentWeather = getCurrentWeather;
+    
+    getGeolocationAndFetchCurrentWeatherData();
 
-    function getGeolocation()
+    function getGeolocationAndFetchCurrentWeatherData()
     {
         geolocationService.getCurrentLocation()
             .then(getCurrentWeather)
@@ -90,8 +135,8 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
     function getCurrentWeather(locationData)
     {
         var request = {
-            latitude: '17.189877',
-            longitude: '-88.497650',
+            latitude: locationData.coords.latitude,
+            longitude: locationData.coords.longitude,
             options: { 
                 unit: weatherForecastConfig.unit,
                 lang: weatherForecastConfig.lang,
@@ -106,7 +151,10 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
 
         return weatherForecastService.fetch(request)
             .then(function(data) {
-                vm.currentWeatherData = data;
+                vm.icon = data._currently._icon;
+                vm.summary = data._currently._summary;
+                vm.temperature = data._currently._temperature;
+                vm.degreeUnit = data._currently._degreeUnit;
             })
             .catch(function(error) {
                 alert(error);
@@ -119,7 +167,7 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
   'use strict';
 
 angular
-    .module('app')
+    .module('weatherForecast')
     .directive('weatherForecastCurrently', weatherForecastCurrently);
 
 /**
@@ -131,9 +179,12 @@ function weatherForecastCurrently() {
         restrict: 'EA',
         link: link,
         scope: {
-            forecastData: '=',
+            summary: '=',
+            icon: '=',
+            temperature: '=',
             showIcon: '=',
-            showSummary: '='
+            showSummary: '=',
+            degreeUnit: '='
         }
     };
 
@@ -210,7 +261,7 @@ function geolocationService($q, $window) {
   'use strict';
 
 angular
-    .module('app')
+    .module('weatherForecast')
     .factory('weatherForecastService', weatherForecastService);
 
 weatherForecastService.$inject = ['$http'];

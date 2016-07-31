@@ -6,7 +6,7 @@
         <meta name="description" content="Weather Forecast">
         <meta charset="UTF-8">
         <meta name="author" content="Hung Le">
-        <title>Weather Forecast</title>
+        <title ng-bind="'Weather Forecast - ' + title"></title>
 
         <link rel="shortcut icon" href="img/favicon.ico" type="image/x-ico">
 
@@ -14,7 +14,10 @@
         <link rel="stylesheet" type="text/css" href="css/site.css">
 
         <!-- libs -->
-        <script src="lib/libraries.js"></script>
+        <script src="lib/spin.js/spin.min.js"></script>
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular-route/angular-route.min.js"></script>
+        <script src="lib/angular-spinner/angular-spinner.min.js"></script>   
 
         <!-- app files -->
         <script src="application.js"></script>
@@ -23,5 +26,6 @@
     <body>
         <!-- app view -->
         <div ng-view></div>
+        <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="pageSpinner"></span>
     </body>
 </html>

@@ -3,7 +3,13 @@
 
 angular
     .module('app', [
-        'ngRoute'
+        'ngRoute',
+        'angularSpinner',
+        'weatherForecast'
+    ]);
+
+angular
+    .module('weatherForecast', [
     ]);
 
 })(window.angular);

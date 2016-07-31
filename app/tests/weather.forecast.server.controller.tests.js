@@ -27,9 +27,13 @@ describe('Weather Forecast controller unit tests:', function () {
 
                     expect(res.text).to.exist;
                     expect(res.text).to.be.an('string');
+                    expect(res.text).to.have.string('_latitude');
+                    expect(res.text).to.have.string('_longitude');
+                    expect(res.text).to.have.string('_currently');
                     expect(res.text).to.have.string('_icon');
                     expect(res.text).to.have.string('_summary');
                     expect(res.text).to.have.string('_temperature');
+                    expect(res.text).to.have.string('_degreeUnit');
 
                     done();
                 });

@@ -3,6 +3,7 @@ describe('Testing Weather Forecast Controller', function () {
 
     beforeEach(function () {
         module('app');
+        module('weatherForecast');
 
         inject(function ($controller) {
             _weatherForecastController = $controller('WeatherForecastController', {}, {});
@@ -13,8 +14,20 @@ describe('Testing Weather Forecast Controller', function () {
             expect(_weatherForecastController).toBeDefined();
     });
 
-    it('Should have the model defined and vm.degress should be equal to "c"', function () {
-            expect(_weatherForecastController.degree).toEqual("c");
+    it('Should have the model defined and vm.degreeUnit should be equal to empty', function () {
+            expect(_weatherForecastController.degreeUnit).toEqual('');
+    });
+
+    it('Should have the model defined and vm.summary should be equal to empty', function () {
+            expect(_weatherForecastController.summary).toEqual('');
+    });
+
+    it('Should have the model defined and vm.icon should be equal to empty', function () {
+            expect(_weatherForecastController.icon).toEqual('');
+    });
+
+    it('Should have the model defined and vm.temperature should be equal to empty', function () {
+            expect(_weatherForecastController.temperature).toEqual('');
     });
 
     it('Should have the model defined and vm.showSummary should be equal to true', function () {
@@ -25,12 +38,8 @@ describe('Testing Weather Forecast Controller', function () {
             expect(_weatherForecastController.showIcon).toEqual(true);
     });
 
-    it('Should have the model defined and vm.showSummary should be equal to true', function () {
-            expect(_weatherForecastController.currentWeatherData).toEqual(null);
-    });
-
-    it('Should have the model and the getGeolocation method defined', function () {
-            expect(_weatherForecastController.getGeolocation).toBeDefined();
+    it('Should have the model and the getGeolocationAndFetchCurrentWeatherData method defined', function () {
+            expect(_weatherForecastController.getGeolocationAndFetchCurrentWeatherData).toBeDefined();
     });
 
     it('Should have the model and the getCurrentWeather method defined', function () {

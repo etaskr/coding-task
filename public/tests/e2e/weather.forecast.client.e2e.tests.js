@@ -5,7 +5,7 @@ describe('Weather Forecast E2E Tests:', function () {
         });
 
         it('Should have a title', function () {
-            expect(browser.getTitle()).toEqual('Weather - Current Temperature');
+            expect(browser.getTitle()).toEqual('Weather Forecast');
         });
     });
 });

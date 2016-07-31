@@ -2,22 +2,14 @@
 "use strict";
 
 /**
- * Weather class (this class needs to be refactored/extended to store more weather data)
+ * Weather Forecast Data Block class
  */
-class Weather {
+class WeatherForecastDataPoint {
     constructor() {
-        this._icon = '';
         this._summary = '';
+        this._icon = '';
         this._temperature = 0;
-        this._degree = '';
-    }
-
-    get icon() {
-        return this._icon;
-    }
-
-    set icon(icon) {
-        this._icon = icon;
+        this._degreeUnit = '';
     }
 
     get summary() {
@@ -28,6 +20,14 @@ class Weather {
         this._summary = summary;
     }
 
+    get icon() {
+        return this._icon;
+    }
+
+    set icon(icon) {
+        this._icon = icon;
+    }
+
     get temperature() {
         return this._temperature;
     }
@@ -36,15 +36,15 @@ class Weather {
         this._temperature = temperature;
     }
 
-    get degree() {
-        return this._icon;
+    get degreeUnit() {
+        return this._degreeUnit;
     }
 
-    set degree(degree) {
-        this._degree = degree;
+    set degreeUnit(degreeUnit) {
+        this._degreeUnit = degreeUnit;
     }
 }
 
-module.exports = Weather;
+module.exports = WeatherForecastDataPoint;
 
 })();

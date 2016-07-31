@@ -2,7 +2,7 @@ describe('Testing Weather Forecast Service', function () {
     var _weatherForecastService;
 
     beforeEach(function () {
-        module('app');
+        module('weatherForecast');
 
         inject(function (weatherForecastService) {
             _weatherForecastService = weatherForecastService;

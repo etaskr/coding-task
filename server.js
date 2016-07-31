@@ -4,7 +4,7 @@ process.env.NODE_HTTP_PORT = process.env.NODE_HTTP_PORT || 8081;
 process.env.NODE_HTTPS_PORT = process.env.NODE_HTTPS_PORT || 8082;
 process.env.NODE_FORECAST_API = process.env.NODE_FORECAST_API || '6759d789feae04ffe702654289b21bff';
 
-var Utilities = require('./app/models/utilities.server.model'),
+var Utilities = require('./app/domain/utilities.server.domain'),
     express = require('./config/express'),
     http = require('http'),
     https = require('https');

@@ -73,8 +73,8 @@ module.exports = function (grunt) {
         tasks: ['sass']
       },
       cc: {
-        files: ['!public/application.js', 'public/*[!tests]*/**/*.js', 'public/*[!lib]*/**/*.js'],
-        tasks: ['concat:app']
+        files: ['!public/application.js', 'public/*[!libs]*/**/*.js', 'public/*[!tests]*/**/*.js'],
+        tasks: ['concat:dist']
       }
     },
     concurrent: {
@@ -106,20 +106,13 @@ module.exports = function (grunt) {
       }
     },
     concat: {
-      libs: {
-        options: {
-          separator: '\n',
-        },
-        src: ['public/lib/angular/angular.js', 'public/lib/angular-route/angular-route.js'],
-        dest: 'public/lib/libraries.js',
-      },
-      app: {
+      dist: {
         options: {
           separator: '\n',
         },
         src: ['public/config/*.js', 'public/controllers/*.js', 'public/directives/*.js', 'public/services/*.js'],
         dest: 'public/application.js',
-      },
+      }
     }
   });
 
@@ -136,10 +129,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-node-inspector');
   grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('default', ['env:dev', 'lint', 'compile', 'concurrent:dev']);
-  grunt.registerTask('debug', ['env:dev', 'lint', 'concurrent:debug']);
-  grunt.registerTask('unit-test', ['env:dev', 'mochaTest', 'karma']);
-  grunt.registerTask('e2e-test', ['env:dev', 'protractor']);
+  grunt.registerTask('default', ['env:dev', 'lint', 'build', 'concurrent:dev']);
+  grunt.registerTask('debug', ['env:dev', 'concurrent:debug']);
+  grunt.registerTask('test', ['env:dev', 'mochaTest', 'karma']);
+  grunt.registerTask('test-e2e', ['env:dev', 'protractor']);
   grunt.registerTask('lint', ['jshint', 'csslint']);
-  grunt.registerTask('compile', ['sass', 'concat']);
+  grunt.registerTask('build', ['sass', 'concat']);
 };

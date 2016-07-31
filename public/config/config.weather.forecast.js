@@ -2,7 +2,7 @@
   'use strict';
 
 angular
-    .module('app')
+    .module('weatherForecast')
     .value('weatherForecastConfig', {
         unit: 'auto', // us, ca, si, uk2, auto
         compressed: true,

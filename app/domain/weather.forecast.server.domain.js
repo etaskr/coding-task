@@ -2,10 +2,13 @@
 "use strict";
 
 var request = require('request'),
-    qs = require('querystring'),
+    Utilities = require('../domain/utilities.server.domain'),
+    // qs = require('querystring'),
     zlib = require('zlib'),
-    Weather = require('./weather.server.model'),
-    WeatherForecastError = require('./weather.forecast.error.server.model');
+    WeatherForecastData = require('../models/weather.forecast.data.server.model'),
+    WeatherForecastDataBlock = require('../models/weather.forecast.data.block.server.model'),
+    WeatherForecastDataPoint = require('../models/weather.forecast.data.point.server.model'),
+    WeatherForecastError = require('../models/weather.forecast.error.server.model');
 
 /**
  * WeatherForecast class
@@ -29,7 +32,7 @@ class WeatherForecast {
         let self = this;
         let headers = {};
 
-        if (typeof options !== 'undefined' && options !== null &&
+        if (!Utilities.isObjectUndefinedOrNullOrEmpty(options) &&
             typeof options.compressed !== 'undefined' && options.compressed) {
             headers = { 'Accept-Encoding': 'gzip' };
         }
@@ -67,36 +70,44 @@ class WeatherForecast {
     }
 
     buildUrl(latitude, longitude, options) {
-        let url = 'https://api.forecast.io/forecast/' + this._APIKey + '/' + latitude + ',' + longitude;
+        let url = 'https://api.forecast.io/forecast/' + this._APIKey + '/' + latitude + ',' + longitude + '?';
         
-        if (typeof options !== 'undefined' && options !== null) {
-            url += '?units=' + options.unit;
+        if (!Utilities.isObjectUndefinedOrNullOrEmpty(options)) {
+            if (!Utilities.isObjectUndefinedOrNullOrEmpty(options.unit)) {
+                url += 'units=' + options.unit + '&';
+            } 
 
-            if (typeof options.exclude !== 'undefined' && options.exclude !== null && options.exclude.length > 0) {
-                url += '&exclude=' + options.exclude.join();
+            if (!Utilities.isObjectUndefinedOrNullOrEmpty(options.exclude) && 
+                options.exclude.length > 0) {
+                url += 'exclude=' + options.exclude.join() + '&';
             }
 
-            if (typeof options.extend !== 'undefined' && options.extend !== null) {
-                url += '&extend=' + options.extend;
+            if (!Utilities.isObjectUndefinedOrNullOrEmpty(options.extend)) {
+                url += 'extend=' + options.extend + '&';
             }
 
-            if (typeof options.lang !== 'undefined' && options.lang !== null) {
-                url += '&lang=' + options.lang;
+            if (!Utilities.isObjectUndefinedOrNullOrEmpty(options.lang)) {
+                url += 'lang=' + options.lang;
             }          
         }
 
         return url;        
     }
 
-    convertWeatherForecastDataToWeatherModel(weatherForecastData) {
-        let weather = new Weather();
+    convertWeatherForecastDataToWeatherModel(data) {
+        let weatherForecastData = new WeatherForecastData();
 
-        weather._icon = weatherForecastData.currently.icon;
-        weather._summary = weatherForecastData.currently.summary;
-        weather._temperature = weatherForecastData.currently.temperature;
-        weather._degree = this.getDegreeUnitBasedOnLocation(weatherForecastData.timezone);
+        weatherForecastData._latitude = data.latitude;
+        weatherForecastData._longitude = data.longitude;
+        weatherForecastData._timezone = data.timezone;
 
-        return weather;
+        weatherForecastData._currently = new WeatherForecastDataPoint();
+        weatherForecastData._currently._icon = data.currently.icon;
+        weatherForecastData._currently._summary = data.currently.summary;
+        weatherForecastData._currently._temperature = data.currently.temperature;
+        weatherForecastData._currently._degreeUnit = this.getDegreeUnitBasedOnLocation(data.timezone);
+
+        return weatherForecastData;
     }
 
     getDegreeUnitBasedOnLocation(timezone) {
