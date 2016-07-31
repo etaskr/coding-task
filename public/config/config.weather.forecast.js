@@ -4,9 +4,9 @@
 angular
     .module('app')
     .value('weatherForecastConfig', {
-        unit: 'ca',
-        degree: 'c',
-        compressed: true
+        unit: 'auto', // us, ca, si, uk2, auto
+        compressed: true,
+        lang: 'en'
     })
     .constant('WEATHER_FORECAST_DATA', {
         currently: 'currently',

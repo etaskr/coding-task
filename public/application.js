@@ -37,9 +37,9 @@ function configRoute($routeProvider) {
 angular
     .module('app')
     .value('weatherForecastConfig', {
-        unit: 'ca',
-        degree: 'c',
-        compressed: true
+        unit: 'auto', // us, ca, si, uk2, auto
+        compressed: true,
+        lang: 'en'
     })
     .constant('WEATHER_FORECAST_DATA', {
         currently: 'currently',
@@ -71,7 +71,6 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
     var vm = this;
 
     vm.currentWeatherData = null;
-    vm.degree = weatherForecastConfig.degree;
     vm.getCurrentWeather = getCurrentWeather;
     vm.getGeolocation = getGeolocation;
     vm.showSummary = true;
@@ -91,10 +90,11 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
     function getCurrentWeather(locationData)
     {
         var request = {
-            latitude: locationData.coords.latitude,
-            longitude: locationData.coords.longitude,
+            latitude: '17.189877',
+            longitude: '-88.497650',
             options: { 
-                unit: weatherForecastConfig.unit, 
+                unit: weatherForecastConfig.unit,
+                lang: weatherForecastConfig.lang,
                 exclude: [ WEATHER_FORECAST_DATA.minutely, 
                         WEATHER_FORECAST_DATA.hourly, 
                         WEATHER_FORECAST_DATA.daily, 
@@ -132,7 +132,6 @@ function weatherForecastCurrently() {
         link: link,
         scope: {
             forecastData: '=',
-            degree: '=',
             showIcon: '=',
             showSummary: '='
         }

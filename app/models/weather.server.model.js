@@ -2,13 +2,14 @@
 "use strict";
 
 /**
- * Weather class
+ * Weather class (this class needs to be refactored/extended to store more weather data)
  */
 class Weather {
     constructor() {
         this._icon = '';
         this._summary = '';
-        this._temperature = -1;
+        this._temperature = 0;
+        this._degree = '';
     }
 
     get icon() {
@@ -33,6 +34,14 @@ class Weather {
 
     set temperature(temperature) {
         this._temperature = temperature;
+    }
+
+    get degree() {
+        return this._icon;
+    }
+
+    set degree(degree) {
+        this._degree = degree;
     }
 }
 

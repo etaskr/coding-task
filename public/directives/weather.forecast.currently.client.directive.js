@@ -15,7 +15,6 @@ function weatherForecastCurrently() {
         link: link,
         scope: {
             forecastData: '=',
-            degree: '=',
             showIcon: '=',
             showSummary: '='
         }

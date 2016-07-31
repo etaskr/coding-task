@@ -18,7 +18,6 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
     var vm = this;
 
     vm.currentWeatherData = null;
-    vm.degree = weatherForecastConfig.degree;
     vm.getCurrentWeather = getCurrentWeather;
     vm.getGeolocation = getGeolocation;
     vm.showSummary = true;
@@ -41,7 +40,8 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
             latitude: locationData.coords.latitude,
             longitude: locationData.coords.longitude,
             options: { 
-                unit: weatherForecastConfig.unit, 
+                unit: weatherForecastConfig.unit,
+                lang: weatherForecastConfig.lang,
                 exclude: [ WEATHER_FORECAST_DATA.minutely, 
                         WEATHER_FORECAST_DATA.hourly, 
                         WEATHER_FORECAST_DATA.daily, 

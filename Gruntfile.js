@@ -74,7 +74,7 @@ module.exports = function (grunt) {
       },
       cc: {
         files: ['!public/application.js', 'public/*[!tests]*/**/*.js', 'public/*[!lib]*/**/*.js'],
-        tasks: ['concat']
+        tasks: ['concat:app']
       }
     },
     concurrent: {

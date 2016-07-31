@@ -70,29 +70,19 @@ class WeatherForecast {
         let url = 'https://api.forecast.io/forecast/' + this._APIKey + '/' + latitude + ',' + longitude;
         
         if (typeof options !== 'undefined' && options !== null) {
-            let units = '';
-            let exclude = '';
+            url += '?units=' + options.unit;
 
-            if (typeof options.unit !== 'undefined' && options.unit !== null) {
-                units = '?units=' + options.unit;
+            if (typeof options.exclude !== 'undefined' && options.exclude !== null && options.exclude.length > 0) {
+                url += '&exclude=' + options.exclude.join();
             }
 
-            if (units !== '') {
-                url += units;
+            if (typeof options.extend !== 'undefined' && options.extend !== null) {
+                url += '&extend=' + options.extend;
             }
 
-            if (typeof options.exclude !== 'undefined' && options.exclude !== null) {
-                exclude = 'exclude=' + options.exclude.join();
-            }
-
-            if (exclude !== '') {
-                if (units !== '') {
-                    url += '&' + exclude;
-                }
-                else {
-                    url += '?' + exclude;
-                }
-            }
+            if (typeof options.lang !== 'undefined' && options.lang !== null) {
+                url += '&lang=' + options.lang;
+            }          
         }
 
         return url;        
@@ -104,8 +94,30 @@ class WeatherForecast {
         weather._icon = weatherForecastData.currently.icon;
         weather._summary = weatherForecastData.currently.summary;
         weather._temperature = weatherForecastData.currently.temperature;
+        weather._degree = this.getDegreeUnitBasedOnLocation(weatherForecastData.timezone);
 
         return weather;
+    }
+
+    getDegreeUnitBasedOnLocation(timezone) {
+        let degree = '';
+        
+        // TODO: more logic to be added to work out the degree unit
+        // These values should be stored in database
+        if (timezone.toLowerCase().indexOf('america') > 0 ||
+            timezone.toLowerCase().indexOf('palau') > 0) {
+            degree = 'f';
+        }
+        else {
+            degree = 'c';
+        }
+
+        return degree;
+    }
+
+    getWeatherUnitsBasedOnLocation(timezone) {
+        // TODO: logic to be added to work out the weather units
+        // These values should be stored in database
     }
 }
 
