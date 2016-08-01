@@ -1,60 +1,88 @@
-.weather-forecast-summary {
-  font-weight: lighter; }
-
-.weather-forecast-currently {
+.weather-forecast-currently-directive {
   text-align: center;
-  height: 100px;
-  width: 105px; }
+  width: 100%; }
 
-.weather-forecast-currently-temperature {
-  height: 52px;
-  margin-top: 7px;
-  font-size: 15px;
+.weather-forecast-currently-directive-heading-timezone {
+  font-size: 28px;
   font-weight: bold; }
 
-.weather-icon, .clear-day, .clear-night, .rain, .snow, .sleet, .wind, .fog, .cloudy, .partly-cloudy-day, .partly-cloudy-night, .celsius, .fahrenheit {
-  background-image: url("../img/weather-icons.png");
+.weather-forecast-currently-directive-heading-time {
+  font-style: italic;
+  font-size: 18px; }
+
+.weather-forecast-currently-directive-temperature {
+  margin-top: 38px; }
+
+.weather-forecast-currently-directive-temperature-degree {
+  font-size: 36px;
+  font-weight: bold; }
+
+.weather-forecast-currently-directive-temperature span {
+  display: inline-block; }
+
+.weather-forecast-currently-directive-icon {
+  margin: auto; }
+
+.weather-forecast-currently-directive-summary {
+  font-size: 26px;
+  font-style: italic; }
+
+.weather-forecast-icon, .clear-day, .clear-night, .rain, .snow, .sleet, .wind, .fog, .cloudy, .partly-cloudy-day, .partly-cloudy-night {
   background-repeat: no-repeat;
-  width: 50px;
-  height: 50px; }
+  width: 256px;
+  height: 256px; }
+
+.weather-forecast-degree-icon, .celsius-active, .celsius-inactive, .fahrenheit-active, .fahrenheit-inactive {
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px; }
 
 .clear-day {
-  background-position: -77px -20px; }
+  background-image: url("../img/weather/weather-clear-day.png"); }
 
 .clear-night {
-  background-position: -149px -20px; }
+  background-image: url("../img/weather/weather-clear-night.png"); }
 
 .rain {
-  background-position: -365px -164px; }
+  background-image: url("../img/weather/weather-rain.png"); }
 
 .snow {
-  background-position: -293px -237px; }
+  background-image: url("../img/weather/weather-snow.png"); }
 
 .sleet {
-  background-position: -365px -237px; }
+  background-image: url("../img/weather/weather-sleet.png"); }
 
 .wind {
-  background-position: -365px -20px; }
+  background-image: url("../img/weather/weather-wind.png"); }
 
 .fog {
-  background-position: -6px -165px; }
+  background-image: url("../img/weather/weather-fog.png"); }
 
 .cloudy {
-  background-position: -77px -165px; }
+  background-image: url("../img/weather/weather-cloudy.png"); }
 
 .partly-cloudy-day {
-  background-position: -77px -94px; }
+  background-image: url("../img/weather/weather-partly-cloudy-day.png"); }
 
 .partly-cloudy-night {
-  background-position: -149px -94px; }
+  background-image: url("../img/weather/weather-partly-clody-night.png"); }
 
-.celsius {
-  background-position: -223px -524px; }
+.celsius-active {
+  background-image: url("../img/weather/weather-celsius-active.png"); }
 
-.fahrenheit {
-  background-position: -293px -524px; }
+.celsius-inactive {
+  background-image: url("../img/weather/weather-celsius-inactive.png");
+  cursor: pointer; }
 
-.left {
-  float: left; }
+.fahrenheit-active {
+  background-image: url("../img/weather/weather-fahrenheit-active.png"); }
+
+.fahrenheit-inactive {
+  background-image: url("../img/weather/weather-fahrenheit-inactive.png");
+  cursor: pointer; }
+
+.center {
+  margin: auto;
+  width: 50%; }
 
 /*# sourceMappingURL=site.css.map */

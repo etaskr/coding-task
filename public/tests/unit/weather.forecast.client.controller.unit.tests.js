@@ -30,6 +30,14 @@ describe('Testing Weather Forecast Controller', function () {
             expect(_weatherForecastController.temperature).toEqual('');
     });
 
+    it('Should have the model defined and vm.time should be equal to empty', function () {
+            expect(_weatherForecastController.time).toEqual('');
+    });
+
+    it('Should have the model defined and vm.timezone should be equal to empty', function () {
+            expect(_weatherForecastController.timezone).toEqual('');
+    });
+
     it('Should have the model defined and vm.showSummary should be equal to true', function () {
             expect(_weatherForecastController.showSummary).toEqual(true);
     });

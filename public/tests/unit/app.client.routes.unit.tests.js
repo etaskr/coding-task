@@ -1,5 +1,7 @@
 describe('Testing App Routing', function () {
-    beforeEach(module('app'));
+    beforeEach(function () {
+        module('app');
+    });
 
     it('Should map the weather forecast route', function () {
         inject(function ($route) {

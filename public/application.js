@@ -20,6 +20,8 @@ angular
     .module('app')
     .config(configRoute);
 
+configRoute.$inject = ['$routeProvider'];
+
 function configRoute($routeProvider) {
     $routeProvider
         .when('/', {
@@ -34,7 +36,6 @@ function configRoute($routeProvider) {
         .otherwise({
             redirectTo: '/'
         });
-
 }
 
 })(window.angular);
@@ -44,6 +45,8 @@ function configRoute($routeProvider) {
 angular
     .module('app')
     .run(configRun);
+
+configRun.$inject = ['$rootScope', '$http', 'usSpinnerService'];
 
 function configRun($rootScope, $http, usSpinnerService) {
     
@@ -99,7 +102,7 @@ angular
     .module('weatherForecast')
     .controller('WeatherForecastController', WeatherForecastController);
 
-WeatherForecastController.$inject = ['weatherForecastService', 'geolocationService', 'weatherForecastConfig', 'WEATHER_FORECAST_DATA'];
+WeatherForecastController.$inject = ['weatherForecastService', 'geolocationService', 'utilitiesService', 'weatherForecastConfig', 'WEATHER_FORECAST_DATA'];
 
 /**
  * A weather forecast controller
@@ -108,7 +111,7 @@ WeatherForecastController.$inject = ['weatherForecastService', 'geolocationServi
  * @param  {Object} geolocationService
  * @param  {Object} WEATHER_FORECAST
  */
-function WeatherForecastController(weatherForecastService, geolocationService, weatherForecastConfig, WEATHER_FORECAST_DATA) {
+function WeatherForecastController(weatherForecastService, geolocationService, utilitiesService, weatherForecastConfig, WEATHER_FORECAST_DATA) {
     var vm = this;
 
     vm.degreeUnit = '';
@@ -117,6 +120,8 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
     vm.showSummary = true;
     vm.summary = '';
     vm.temperature = '';
+    vm.time = '';
+    vm.timezone = '';
 
     vm.getGeolocationAndFetchCurrentWeatherData = getGeolocationAndFetchCurrentWeatherData;
     vm.getCurrentWeather = getCurrentWeather;
@@ -154,11 +159,18 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
                 vm.icon = data._currently._icon;
                 vm.summary = data._currently._summary;
                 vm.temperature = data._currently._temperature;
-                vm.degreeUnit = data._currently._degreeUnit;
+                vm.degreeUnit = data._currently._degreeUnit;           
+                vm.timezone = data._timezone;
+                vm.time = convertToDate(data._currently._time).toString();
             })
             .catch(function(error) {
                 alert(error);
             });
+    }
+
+    function convertToDate(data)
+    {
+        return utilitiesService.isNumber(data) ? new Date(data * 1000) : new Date(data);
     }
 }
 
@@ -178,19 +190,80 @@ function weatherForecastCurrently() {
         templateUrl: '/directives/weather.forecast.currently.client.directive.html',
         restrict: 'EA',
         link: link,
+        compile: compile,
         scope: {
-            summary: '=',
+            degreeUnit: '=',
             icon: '=',
-            temperature: '=',
             showIcon: '=',
             showSummary: '=',
-            degreeUnit: '='
-        }
+            summary: '=',
+            temperature: '=',
+            time: '=',
+            timezone: '='
+        },
+        controller: WeatherForecastCurrentlyController,
+        controllerAs: 'vm',
+        bindToController: true
     };
 
     return directive;
 
-    function link(scope, element, attrs) {
+    function compile(el, attr, trans) {
+    }
+
+    function link(scope, el, attr) {     
+    }
+}
+
+function WeatherForecastCurrentlyController() {
+    var vm = this;
+
+    vm.convertFromCelsiusToFahrenheit = convertFromCelsiusToFahrenheit;
+    vm.convertFahrenheitToCelsius = convertFahrenheitToCelsius;
+    vm.displayDegreeUnit = displayDegreeUnit;
+
+    displayDegreeUnit(vm.degreeUnit);
+
+    function displayDegreeUnit(degreeUnit) {
+        var degreeCelsius = angular.element(document.querySelector('#weather-forecast-currently-directive-temperature-degree-celsius'));
+        var degreeFahrenheit = angular.element(document.querySelector('#weather-forecast-currently-directive-temperature-degree-fahrenheit'));
+        var temperature = angular.element(document.querySelector('#weather-forecast-currently-directive-temperature-degree'));
+
+        if (degreeUnit == 'f') {
+            degreeCelsius.removeClass('celsius-active');
+            degreeCelsius.addClass('celsius-inactive');
+
+            degreeFahrenheit.removeClass('fahrenheit-inactive');
+            degreeFahrenheit.addClass('fahrenheit-active');
+
+            degreeCelsius.bind("click", function () {
+                temperature.text(convertFahrenheitToCelsius(parseFloat(temperature.text())));
+                vm.displayDegreeUnit('c');
+            });
+
+            degreeFahrenheit.unbind("click");
+        } else {
+            degreeCelsius.removeClass('celsius-inactive');
+            degreeCelsius.addClass('celsius-active');
+
+            degreeFahrenheit.removeClass('fahrenheit-active');
+            degreeFahrenheit.addClass('fahrenheit-inactive');
+
+            degreeFahrenheit.bind("click", function () {
+                temperature.text(convertFromCelsiusToFahrenheit(parseFloat(temperature.text())));
+                vm.displayDegreeUnit('f');
+            });
+
+            degreeCelsius.unbind("click");
+        }
+    }
+
+    function convertFromCelsiusToFahrenheit(degreeInCelsius) {
+        return parseFloat((degreeInCelsius*9)/5 + 32).toFixed(2);
+    }
+
+    function convertFahrenheitToCelsius(degreeInFahrenheit) {
+        return parseFloat(((degreeInFahrenheit-32)*5)/9).toFixed(2);
     }
 }
 
@@ -253,6 +326,30 @@ function geolocationService($q, $window) {
         }
 
         return deferred.promise;
+    }
+}
+
+})(window.angular);
+(function(angular) {
+  'use strict';
+
+angular
+    .module('app')
+    .factory('utilitiesService', utilitiesService);
+
+/**
+ * a utilities service
+ * 
+ */
+function utilitiesService() {
+    var service = {
+        isNumber: isNumber
+    };
+
+    return service;
+
+    function isNumber(data) {
+        return !isNaN(parseFloat(data)) && isFinite(data);
     }
 }
 

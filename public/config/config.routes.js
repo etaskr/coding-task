@@ -5,6 +5,8 @@ angular
     .module('app')
     .config(configRoute);
 
+configRoute.$inject = ['$routeProvider'];
+
 function configRoute($routeProvider) {
     $routeProvider
         .when('/', {
@@ -19,7 +21,6 @@ function configRoute($routeProvider) {
         .otherwise({
             redirectTo: '/'
         });
-
 }
 
 })(window.angular);

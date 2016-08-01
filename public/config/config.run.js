@@ -5,6 +5,8 @@ angular
     .module('app')
     .run(configRun);
 
+configRun.$inject = ['$rootScope', '$http', 'usSpinnerService'];
+
 function configRun($rootScope, $http, usSpinnerService) {
     
     setPageTitle();

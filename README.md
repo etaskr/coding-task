@@ -1,16 +1,18 @@
-# etaskr Coding Task
+# Application
 
-a Node.js application which shows the current temperature based on current location.
+a Node.js/AngularJS application which shows the current temperature based on current location.
 
 ## Installation
 
-* Go to the root of the application folder 
-* Type 'npm install' to start the installation
+* You must install node.js on the machine first (https://nodejs.org)
+* In the terminal/console, go to the root of the application folder 
+* Type 'npm build' to start the installation
 
 ## Usage
 
-* Type 'node server' to start the app
+* Type 'npm start' or 'node server' to start up the app
 * Open a web browser and go to http://localhost:8081/ (works with all browsers except Chrome) or https://localhost:8082/ (works with all browsers including Chrome)
+* You can toggle between Celsius and Fahrenheit by clicking on the C or F (set automatically based on location at first)
 
 ## Default Environment Variables
 
@@ -32,5 +34,4 @@ Execute commands below if certificates need to be generated
 
 ## To-Do
 
-* Creat some more E2E tests
-* Create Grunt tasks to minify/concat css/js files
+* Creat some more unit and E2E tests for the front-end

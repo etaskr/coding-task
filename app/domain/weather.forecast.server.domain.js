@@ -105,6 +105,7 @@ class WeatherForecast {
         weatherForecastData._currently._icon = data.currently.icon;
         weatherForecastData._currently._summary = data.currently.summary;
         weatherForecastData._currently._temperature = data.currently.temperature;
+        weatherForecastData._currently._time = data.currently.time;
         weatherForecastData._currently._degreeUnit = this.getDegreeUnitBasedOnLocation(data.timezone);
 
         return weatherForecastData;

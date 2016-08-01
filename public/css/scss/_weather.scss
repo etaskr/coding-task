@@ -1,83 +1,120 @@
-.weather-forecast-summary {
-  font-weight: lighter;
+.weather-forecast-currently-directive {
+    text-align: center;
+    width: 100%;
 }
 
-.weather-forecast-currently {
-  text-align: center;
-  height: 100px;
-  width: 105px;
+.weather-forecast-currently-directive-heading-timezone {
+    font-size: 28px;
+    font-weight: bold;
 }
 
-.weather-forecast-currently-temperature {
-  height: 52px;
-  margin-top: 7px;
-  font-size: 15px;
-  font-weight: bold;
+.weather-forecast-currently-directive-heading-time {
+    font-style: italic;
+    font-size: 18px;
 }
 
-.weather-icon {
-    background-image: url('../img/weather-icons.png');
+.weather-forecast-currently-directive-temperature {
+    margin-top: 38px;
+}
+
+.weather-forecast-currently-directive-temperature-degree {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.weather-forecast-currently-directive-temperature span {
+    display: inline-block;
+}
+
+.weather-forecast-currently-directive-icon {
+    margin: auto;
+}
+
+.weather-forecast-currently-directive-summary {
+    font-size: 26px;
+    font-style: italic;
+}
+
+.weather-forecast-icon {
     background-repeat: no-repeat;
-    width: 50px;
-    height: 50px;
+    width: 256px;
+    height: 256px;
+}
+
+.weather-forecast-degree-icon {
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
 }
 
 .clear-day {
-    @extend .weather-icon;
-    background-position: -77px -20px;
+    @extend .weather-forecast-icon;
+    background-image: url('../img/weather/weather-clear-day.png');
 }
 
 .clear-night {
-    @extend .weather-icon;
-    background-position: -149px -20px;
+    @extend .weather-forecast-icon;
+    background-image: url('../img/weather/weather-clear-night.png');
 }
 
 .rain {
-    @extend .weather-icon;
-    background-position: -365px -164px;
+    @extend .weather-forecast-icon;
+    background-image: url('../img/weather/weather-rain.png');
 }
 
 .snow {
-    @extend .weather-icon;
-    background-position: -293px -237px;
+    @extend .weather-forecast-icon;
+    background-image: url('../img/weather/weather-snow.png');
 }
 
 .sleet {
-    @extend .weather-icon;
-    background-position: -365px -237px;
+    @extend .weather-forecast-icon;
+    background-image: url('../img/weather/weather-sleet.png');
 }
 
 .wind {
-    @extend .weather-icon;
-    background-position: -365px -20px;
+    @extend .weather-forecast-icon;
+    background-image: url('../img/weather/weather-wind.png');
 }
 
 .fog {
-    @extend .weather-icon;
-    background-position: -6px -165px;
+    @extend .weather-forecast-icon;
+    background-image: url('../img/weather/weather-fog.png');
 }
 
 .cloudy {
-    @extend .weather-icon;
-    background-position: -77px -165px;
+    @extend .weather-forecast-icon;
+    background-image: url('../img/weather/weather-cloudy.png');
 }
 
 .partly-cloudy-day {
-    @extend .weather-icon;
-    background-position: -77px -94px;
+    @extend .weather-forecast-icon;
+    background-image: url('../img/weather/weather-partly-cloudy-day.png');
 }
 
 .partly-cloudy-night {
-    @extend .weather-icon;
-    background-position: -149px -94px;
+    @extend .weather-forecast-icon;
+    background-image: url('../img/weather/weather-partly-clody-night.png');
 }
 
-.celsius {
-    @extend .weather-icon;
-    background-position: -223px -524px;
+.celsius-active {
+    @extend .weather-forecast-degree-icon;
+    background-image: url('../img/weather/weather-celsius-active.png');
 }
 
-.fahrenheit {
-    @extend .weather-icon;
-    background-position: -293px -524px;
+.celsius-inactive {
+    @extend .weather-forecast-degree-icon;
+    background-image: url('../img/weather/weather-celsius-inactive.png');
+    cursor: pointer;
+}
+
+.fahrenheit-active {
+    @extend .weather-forecast-degree-icon;
+    background-image: url('../img/weather/weather-fahrenheit-active.png');
+}
+
+.fahrenheit-inactive {
+    @extend .weather-forecast-degree-icon;
+    background-image: url('../img/weather/weather-fahrenheit-inactive.png');
+    cursor: pointer;
 }

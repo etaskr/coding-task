@@ -10,6 +10,7 @@ class WeatherForecastDataPoint {
         this._icon = '';
         this._temperature = 0;
         this._degreeUnit = '';
+        this._time = 0;
     }
 
     get summary() {
@@ -42,6 +43,14 @@ class WeatherForecastDataPoint {
 
     set degreeUnit(degreeUnit) {
         this._degreeUnit = degreeUnit;
+    }
+
+    get time() {
+        return this._time;
+    }
+
+    set time(degreeUnit) {
+        this._time = time;
     }
 }
 

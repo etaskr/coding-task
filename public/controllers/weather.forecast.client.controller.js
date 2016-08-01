@@ -5,7 +5,7 @@ angular
     .module('weatherForecast')
     .controller('WeatherForecastController', WeatherForecastController);
 
-WeatherForecastController.$inject = ['weatherForecastService', 'geolocationService', 'weatherForecastConfig', 'WEATHER_FORECAST_DATA'];
+WeatherForecastController.$inject = ['weatherForecastService', 'geolocationService', 'utilitiesService', 'weatherForecastConfig', 'WEATHER_FORECAST_DATA'];
 
 /**
  * A weather forecast controller
@@ -14,7 +14,7 @@ WeatherForecastController.$inject = ['weatherForecastService', 'geolocationServi
  * @param  {Object} geolocationService
  * @param  {Object} WEATHER_FORECAST
  */
-function WeatherForecastController(weatherForecastService, geolocationService, weatherForecastConfig, WEATHER_FORECAST_DATA) {
+function WeatherForecastController(weatherForecastService, geolocationService, utilitiesService, weatherForecastConfig, WEATHER_FORECAST_DATA) {
     var vm = this;
 
     vm.degreeUnit = '';
@@ -23,6 +23,8 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
     vm.showSummary = true;
     vm.summary = '';
     vm.temperature = '';
+    vm.time = '';
+    vm.timezone = '';
 
     vm.getGeolocationAndFetchCurrentWeatherData = getGeolocationAndFetchCurrentWeatherData;
     vm.getCurrentWeather = getCurrentWeather;
@@ -60,11 +62,18 @@ function WeatherForecastController(weatherForecastService, geolocationService, w
                 vm.icon = data._currently._icon;
                 vm.summary = data._currently._summary;
                 vm.temperature = data._currently._temperature;
-                vm.degreeUnit = data._currently._degreeUnit;
+                vm.degreeUnit = data._currently._degreeUnit;           
+                vm.timezone = data._timezone;
+                vm.time = convertToDate(data._currently._time).toString();
             })
             .catch(function(error) {
                 alert(error);
             });
+    }
+
+    function convertToDate(data)
+    {
+        return utilitiesService.isNumber(data) ? new Date(data * 1000) : new Date(data);
     }
 }
 
