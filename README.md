@@ -1,40 +1,51 @@
-# etaskr Coding Task Guidelines
+# Weather Forecast
 
-There's few better ways to assess someone's programming skills than to have them undertake a reasonably open ended coding task. This task is borrowed heavily from https://github.com/Westpac-Mobile/CodingTest, so thank-you to those people for such a great boilerplate. 
+a Node.js/AngularJS application which shows the current temperature based on current location.
 
-Please do not spend more that 2-3 hours on this task. If it takes you much longer than that, there is something fundamentally wrong with your approach.
+## Installation
 
-## Requirements
+* Node.js must be installed on the machine first (https://nodejs.org)
+* In the terminal/console, go to the root of the application folder 
+* Type "npm install -g bower" to install the bower package management
+* Type "npm install" to install the back-end dependencies
+* Type "bower update" to install the front-end dependencies
+* To run unit tests, please install mocha by typing "npm install -g mocha" and karma by typing "npm install -g karma-cli"
+* To run grunt tasks, please install Grunt by typing "npm install -g grunt-cli"
+* NOTE: Ruby and Sass need to be installed in order to compile scss files
 
-The task is to create a basic web application that displays the current temperature using https://forecast.io/ using the geo-location of your browser.
+## Usage
 
-### Key business requirements
+* Type 'npm start' or 'node server' to start up the app
+* Open a web browser and go to http://localhost:8081/ (works with all browsers except Chrome) or https://localhost:8082/ (works with all browsers including Chrome)
+* You can toggle between Celsius and Fahrenheit by clicking on the C or F (set automatically based on location at first)
+* Enjoy Melboure weather :)
 
-* Display the current temperature in degrees celsius
-* Display the temperature based on the geolocation (note; not the IP!) of your browser
-* Display a simple icon and label based on the weather information provided (eg. sunny, cloudy, rainy etc).
-* The API request must be proxied via your web application ie. do not make a request from the client side directly to https://developer.forecast.io/ for the weather information. It must go via your localhost app.
+## Default Environment Variables
 
-### What we will be looking for in the applicant and the application
+Below are the default values for the environment variables. Set them to something else if needed.
 
-We are looking for *engineers* that can lead technology and design decisions without the need for explicit guidance. We value the following:
+* Linux/Unix/Mac
+    * export/set NODE_ENV=development
+    * export/set NODE_HTTP_PORT=8081
+    * export/set NODE_HTTPS_PORT=8082
+    * export/set NODE_FORECAST_API=6759d789feae04ffe702654289b21bff
 
-* SOLID design principles.
-    * Single use, inversion of control, dependency injection et al.
-    * Considered design patterns over spaghetti code. eg. MVC, Pub/Sub, Factory, etc
-* Testable, clean code.
-    * Unit tests.
-    * Integration tests.
-    * Simplicity of setup / mocks for testing.
-* Modular and maintainable code.
-    * Package managers.
-    * Documentation.
-    * Understandability.
-    * Coding standards.
-    * Scalable solutions.
+* Windows
+    * set NODE_ENV=development
+    * set NODE_HTTP_PORT=8081
+    * set NODE_HTTPS_PORT=8082
+    * set NODE_FORECAST_API=6759d789feae04ffe702654289b21bff
 
-## Getting Started
+## SSL (Generating Certificates)
 
-* Fork this repository.
-* Register for a free API key at: https://developer.forecast.io/.
-* Commit your code, and send us a pull request when you are finished.
+Execute commands below if certificates need to be generated
+
+ * openssl genrsa -des3 -out server.enc.key 1024
+ * openssl req -new -key server.enc.key -out server.csr
+ * openssl rsa -in server.enc.key -out server.key
+ * openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+
+## To-Do
+
+* Create more unit and E2E tests for the front-end
+* Create more unit tests for the back-end

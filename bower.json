@@ -1,0 +1,23 @@
+{
+  "name": "coding-task",
+  "description": "A Node.js application which shows the current temperature based on current location",
+  "main": "server.js",
+  "authors": [
+    "Hung Le"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/lequhung/coding-task",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "angular-mocks": "^1.5.8",
+    "angular-spinner": "^0.8.1"
+  }
+}

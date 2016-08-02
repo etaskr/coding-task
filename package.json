@@ -1,0 +1,54 @@
+{
+  "name": "coding-task",
+  "version": "0.0.1",
+  "description": "A Node.js application which shows the current temperature based on current location",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "test": "mocha app/tests && karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lequhung/coding-task.git"
+  },
+  "author": "Hung Le",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lequhung/coding-task/issues"
+  },
+  "homepage": "https://github.com/lequhung/coding-task#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.1.1",
+    "grunt": "^1.0.1",
+    "grunt-concurrent": "^2.3.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-csslint": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-htmlmin": "^2.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-env": "^0.4.4",
+    "grunt-karma": "^2.0.0",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-node-inspector": "^0.4.2",
+    "grunt-nodemon": "^0.4.2",
+    "grunt-protractor-runner": "^3.2.0",
+    "karma": "^1.1.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "mocha": "^2.5.3",
+    "supertest": "^1.2.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "request": "^2.74.0"
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en-AU" ng-app="app">
+    <head>
+        <meta name="keywords" content="weather,temperature,forecast">
+        <meta name="description" content="Weather Forecast">
+        <meta charset="UTF-8">
+        <meta name="author" content="Hung Le">
+        <title ng-bind="'Weather Forecast - ' + title"></title>
+
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-ico">
+
+        <!-- main stylesheet -->
+        <link rel="stylesheet" type="text/css" href="css/site.css">
+
+        <!-- libs -->
+        <script src="lib/spin.js/spin.min.js"></script>
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular-route/angular-route.min.js"></script>
+        <script src="lib/angular-spinner/angular-spinner.min.js"></script>   
+
+        <!-- app files -->
+        <script src="application.js"></script>
+    </head>
+
+    <body>
+        <!-- app view -->
+        <div ng-view></div>
+        <span us-spinner="{top:'30%', radius:30, width:10, length: 20}" spinner-key="pageSpinner"></span>
+    </body>
+</html>

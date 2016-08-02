@@ -1,0 +1,17 @@
+<div class="weather-forecast-currently-directive">
+    <div class="weather-forecast-currently-directive-heading">
+        <div class="weather-forecast-currently-directive-heading-timezone">{{ vm.timezone }}</div>
+        <div class="weather-forecast-currently-directive-heading-time">{{ vm.time }}</div>
+    </div>
+
+    <div class="weather-forecast-currently-directive-temperature">
+        <span id="weather-forecast-currently-directive-temperature-degree" 
+              class="weather-forecast-currently-directive-temperature-degree">{{ vm.temperature }}</span>
+        <span id="weather-forecast-currently-directive-temperature-degree-celsius"></span> | 
+        <span id="weather-forecast-currently-directive-temperature-degree-fahrenheit"></span>
+    </div>
+
+    <div class="weather-forecast-currently-directive-icon" ng-class="vm.icon" ng-show="vm.showIcon"></div>
+    
+    <div class="weather-forecast-currently-directive-summary" ng-show="vm.showSummary">{{ vm.summary }}</div>
+</div>
