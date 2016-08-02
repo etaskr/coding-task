@@ -46,32 +46,12 @@ angular
     .module('app')
     .run(configRun);
 
-configRun.$inject = ['$rootScope', '$http', 'usSpinnerService'];
+configRun.$inject = ['utilitiesService'];
 
-function configRun($rootScope, $http, usSpinnerService) {
+function configRun(utilitiesService) {
     
-    setPageTitle();
-    toggleLoadingSpinner();
-
-    function setPageTitle() {
-        $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-            $rootScope.title = current.$$route.title;
-        });
-    }
-
-    function toggleLoadingSpinner() {
-        $rootScope.isLoading = function () {
-            return $http.pendingRequests.length > 0;
-        };
-
-        $rootScope.$watch($rootScope.isLoading, function (loading) {
-            if (loading) {
-                usSpinnerService.spin('pageSpinner');
-            } else {
-                usSpinnerService.stop('pageSpinner');
-            }
-        });
-    }
+    utilitiesService.setPageTitle();
+    utilitiesService.togglePageLoadingSpinner();
 }
 
 })(window.angular);
@@ -337,19 +317,43 @@ angular
     .module('app')
     .factory('utilitiesService', utilitiesService);
 
+utilitiesService.$inject = ['$rootScope', '$http', 'usSpinnerService'];
+
 /**
  * a utilities service
  * 
  */
-function utilitiesService() {
+function utilitiesService($rootScope, $http, usSpinnerService) {
     var service = {
-        isNumber: isNumber
+        isNumber: isNumber,
+        setPageTitle: setPageTitle,
+        togglePageLoadingSpinner: togglePageLoadingSpinner
     };
 
     return service;
 
     function isNumber(data) {
         return !isNaN(parseFloat(data)) && isFinite(data);
+    }
+
+    function setPageTitle() {
+        $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+            $rootScope.title = current.$$route.title;
+        });
+    }
+
+    function togglePageLoadingSpinner() {
+        $rootScope.isHttpRequestPending = function () {
+            return $http.pendingRequests.length > 0;
+        };
+
+        $rootScope.$watch($rootScope.isHttpRequestPending, function (loading) {
+            if (loading) {
+                usSpinnerService.spin('pageSpinner');
+            } else {
+                usSpinnerService.stop('pageSpinner');
+            }
+        });
     }
 }
 

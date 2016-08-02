@@ -4,8 +4,14 @@ a Node.js/AngularJS application which shows the current temperature based on cur
 
 ## Installation
 
-* You must install node.js on the machine first (https://nodejs.org)
-* In the terminal/console, go to the root of the application folder and type 'npm build' to start the installation
+* Node.js must be installed on the machine first (https://nodejs.org)
+* In the terminal/console, go to the root of the application folder 
+* Type "npm install -g bower" to install the bower package management
+* Type "npm install" to install the back-end dependencies
+* Type "bower update" to install the front-end dependencies
+* To run unit tests, please install mocha by typing "npm install -g mocha" and karma by typing "npm install -g karma-cli"
+* To run grunt tasks, please install Grunt by typing "npm install -g grunt-cli"
+* NOTE: Ruby and Sass need to be installed in order to compile scss files
 
 ## Usage
 
