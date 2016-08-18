@@ -17,21 +17,7 @@ The task is to create a basic web application that displays the current temperat
 
 ### What we will be looking for in the applicant and the application
 
-We are looking for *engineers* that can lead technology and design decisions without the need for explicit guidance. We value the following:
-
-* SOLID design principles.
-    * Single use, inversion of control, dependency injection et al.
-    * Considered design patterns over spaghetti code. eg. MVC, Pub/Sub, Factory, etc
-* Testable, clean code.
-    * Unit tests.
-    * Integration tests.
-    * Simplicity of setup / mocks for testing.
-* Modular and maintainable code.
-    * Package managers.
-    * Documentation.
-    * Understandability.
-    * Coding standards.
-    * Scalable solutions.
+We are looking for *engineers* that can lead technology and design decisions without the need for explicit guidance.  This is why we are not providing an exact outline of what we are looking for, so we influence your direction on this task as little as possible. We want to see how you work unencumbered and get to know what really matters to you when developing a web application.
 
 ## Getting Started
 
