@@ -5,8 +5,9 @@
 import path from 'path';
 import express from 'express';
 import morgan from 'morgan';
+
 import logger from './helpers/logger';
-import stringify from 'json-stringify-safe';
+import appErrorHandler from './middleware/error-handler';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const port = isProduction ? 8080 : 3000;
@@ -30,16 +31,9 @@ app.all('*', function response(req, res) {
 
 
 /**
- * Error Handlers
+ * Error Handler
  */
-app.use(function (err, req, res, next) {
-    logger.error(err);
-
-    res
-        .status(err.status || 500)
-        .type('application/json')
-        .send(stringify(err));
-});
+app.use(appErrorHandler);
 
 
 app.listen(port, function () {
