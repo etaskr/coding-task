@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "etaskr.Portal", "etaskr.Portal\etaskr.Portal.csproj", "{9E9ED597-50A0-424E-923D-BF0161BFE2FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "etaskr.Forecast", "etaskr.Forecast\etaskr.Forecast.csproj", "{05531ACC-6545-4381-9ABC-2157EDBFD5EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E9ED597-50A0-424E-923D-BF0161BFE2FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E9ED597-50A0-424E-923D-BF0161BFE2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E9ED597-50A0-424E-923D-BF0161BFE2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E9ED597-50A0-424E-923D-BF0161BFE2FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05531ACC-6545-4381-9ABC-2157EDBFD5EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05531ACC-6545-4381-9ABC-2157EDBFD5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05531ACC-6545-4381-9ABC-2157EDBFD5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05531ACC-6545-4381-9ABC-2157EDBFD5EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
