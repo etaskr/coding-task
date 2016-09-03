@@ -5,8 +5,8 @@
 import { Internal } from '../helpers/errors';
 
 class WeatherForecast {
-    weather: Object;
     location: string;
+    weather: Object;
 
     /**
      * Weather constructor
