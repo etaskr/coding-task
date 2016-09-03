@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 'use strict';
 
@@ -9,14 +9,14 @@
  */
 class ExtendableError extends Error {
     name: string;
-    message: string;
+    error: string;
     statusCode: number;
 
     constructor (status: number = 400, message: string) {
         super(message);
 
         this.name = this.constructor.name;
-        this.message = message;
+        this.error = message;
         this.statusCode = status;
     }
 }

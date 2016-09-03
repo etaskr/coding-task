@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 import logger from '../helpers/logger';
 import stringify from 'json-stringify-safe';
@@ -6,12 +6,13 @@ import { NotFound } from '../helpers/errors';
 
 /**
  * Middleware used to catch and handle AppErrors
- * @param  {Error}    err  error object
- * @param  {Object}   req  http request
- * @param  {Object}   res  http response
- * @param  {Function} next next
+ * @param  {Error}    err  - error object
+ * @param  {Object}   req  - http request
+ * @param  {Object}   res  - http response
+ * @param  {Function} next - next
  */
 function appErrorHandler (err: Object, req: Object, res: Object, next: mixed) {
+
     // log error
     logger.error(err);
 
@@ -24,7 +25,7 @@ function appErrorHandler (err: Object, req: Object, res: Object, next: mixed) {
     err.message = err.message || 'Internal Server Error';
 
     res
-        .status(err.status || 500)
+        .status(err.statusCode || 500)
         .type('application/json')
         .send(stringify(err));
 }

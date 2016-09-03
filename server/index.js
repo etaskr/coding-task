@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 'use strict';
 
@@ -8,6 +8,7 @@ import morgan from 'morgan';
 
 import logger from './helpers/logger';
 import appErrorHandler from './middleware/error-handler';
+import routes from './routes';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const port = isProduction ? 8080 : 3000;
@@ -25,6 +26,8 @@ app.use(express.static(clientPath));
 /**
  * Routes
  */
+app.use('/', routes);
+
 app.all('*', function response(req, res) {
     res.sendFile(path.join(clientPath, 'index.html'));
 });

@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 'use strict';
 
@@ -11,7 +11,7 @@ class Forecaster {
     /**
      * Forecaster constructor
      * @constructor
-     * @param {String} apiKey forecaster.io API key
+     * @param {String} apiKey - forecaster.io API key
      */
     constructor (apiKey: string) {
         this.baseUrl = 'https://api.forecast.io/forecast/' + apiKey + '/';
@@ -20,9 +20,9 @@ class Forecaster {
 
     /**
      * get weather forcast for given lat long
-     * @param  {String} lat  latitude
-     * @param  {String} long longitude
-     * @param  {Object} options options to send to with forecast.io request
+     * @param  {String} lat     - latitude
+     * @param  {String} long    - longitude
+     * @param  {Object} options - options to send to with forecast.io request
      * @return {Promise}
      */
     getForecast (lat: string, long: string, options: Object = {}): Promise<Object> {
@@ -38,9 +38,9 @@ class Forecaster {
 
 
     /**
-     * make forecast.io API request
-     * @param  {String} url request URL
-     * @param  {Object} params options to passed as quest string params
+     * make forecast.io API    - request
+     * @param  {String} url    - request URL
+     * @param  {Object} params - options to passed as quest string params
      * @return {Promise}
      */
     makeRequest (url: string, params: Object): Promise<Object> {

@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 'use strict';
 
@@ -19,8 +19,8 @@ class Geocoder {
 
     /**
      * geocode a location
-     * @param  {String} location location to geocode
-     * @param  {Object} options  additional Google goecode API options
+     * @param  {String} location - location to geocode
+     * @param  {Object} options  - additional Google goecode API options
      * @return {Promise}
      */
     geocode (location: string, options: ?Object): Promise<Object> {
@@ -36,9 +36,9 @@ class Geocoder {
 
     /**
      * reverse geocode a latitude and longitude into an address
-     * @param  {String} lat     latitude
-     * @param  {String} long    longitude
-     * @param  {Object} options additional Google geocode API options
+     * @param  {String} lat     - latitude
+     * @param  {String} long    - longitude
+     * @param  {Object} options - additional Google geocode API options
      * @return {Promise}
      */
     reverseGeocode (lat: string, long: string, options: ?Object): Promise<Object> {
@@ -54,8 +54,8 @@ class Geocoder {
 
     /**
      * make Google geocoding API request
-     * @param  {String} url request URL
-     * @param  {Object} params options to passed as quest string params
+     * @param  {String} url    - request URL
+     * @param  {Object} params - options to passed as quest string params
      * @return {Promise}
      */
     makeRequest (url: string, params: Object): Promise<Object>{
