@@ -44,8 +44,9 @@ Will run the unit tests. Currently only the server side services are unit tested
 Note that you need to provide the API key in order for to test the forecaster.io lib service.
 
 ## Improvements
-Given more time I would like to have included:
+Additions/improvements I would have liked to have included:
 * Refactor App and AppContainer state logic using a Flux pattern (Redux) to remove state and props coupling between parent and child components
+* Finish server unit tests
 * Add React Unit and E2E tests
 * Better FlowType integrations with custom declarations
 
