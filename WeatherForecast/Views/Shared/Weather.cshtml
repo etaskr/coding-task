@@ -1,0 +1,17 @@
+﻿@model dynamic
+
+<h1>Weather</h1>
+
+@if (Model != null)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h2>@Model.timezone</h2>
+            <i class="@Model.currently.icon" style="font-size:40px;"></i>   <span><b>"@Model.currently.summary".</b></span>            
+            <p>Current Temperature is "@Model.currently.temperature" .</p>           
+        </div>
+
+    </div>
+}
+
+
