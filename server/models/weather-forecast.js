@@ -40,24 +40,35 @@ class WeatherForecast {
      * @type {String} short location
      */
     parseLocation (location: Object): string {
-        const shortLoc = {};
-
         if (!location) {
             return '';    
         }
 
+        const locObject = this.generateLocationObject(location);
+
+        return Object.keys(locObject).map((e) => locObject[e]).join(', ');
+    }
+
+
+    /**
+     * generate location object of required keys to make up address
+     * @param  {Object} location location object from Google API
+     * @return {Object}          key value pairs of desired address keys
+     */
+    generateLocationObject (location: Object): Object {
+        const locObject = {};
         for (let component of location.address_components) {
             if (component.types.includes('locality')) {
-                shortLoc.locality = component.short_name;
+                locObject.locality = component.short_name;
             }
             if (component.types.includes('administrative_area_level_1')) {
-                shortLoc.city = component.short_name;
+                locObject.city = component.short_name;
             }
-            if (component.types.includes('country')) {
-                shortLoc.country = component.short_name;
-            }
+            // if (component.types.includes('country')) {
+            //     locObject.country = component.short_name;
+            // }
         }
-        return Object.keys(shortLoc).map((e) => shortLoc[e]).join(', ');
+        return locObject;
     }
 
 
@@ -66,14 +77,21 @@ class WeatherForecast {
      * @type {Object}
      */
     parseWeather (forecast: Object): Object {
+        const numDaysToShow = 5;
+
         let weather = {
             current: this.parseCurrentWeather(forecast.currently),
             daily: []
         };
 
-        forecast.daily.data.forEach((day) => {
-            weather.daily.push(this.parseDayWeather(day));
-        });
+        // forecast.daily.data.forEach((day) => {
+        //     weather.daily.push(this.parseDayWeather(day));
+        // });
+
+        // num days to show +1 to get todays forecast
+        for(let i = 0; i < numDaysToShow + 1; i++) {
+            weather.daily.push(this.parseDayWeather(forecast.daily.data[i]));
+        }
 
         return weather;
     }
@@ -86,7 +104,7 @@ class WeatherForecast {
     parseCurrentWeather (current: Object): Object {
         return {
             icon: current.icon,
-            temperature: current.temperature,
+            temperature: Math.round(current.temperature),
             summary: current.summary
         }
     }
@@ -99,8 +117,22 @@ class WeatherForecast {
     parseDayWeather (daily: Object): Object {
         return {
             icon: daily.icon,
-            max: daily.temperatureMax
+            min: Math.round(daily.temperatureMin),
+            max: Math.round(daily.temperatureMax),
+            day: this.parseTimeToDay(daily.time),
+            chanceRain: Math.round(daily.precipProbability * 100)
         }
+    }
+
+
+    /**
+     * convert unix timestamp to day of the week
+     * @type {String} time unix time
+     */
+    parseTimeToDay (time: number): string {
+        const days = ['Sun','Mon','Tues','Wed','Thur','Fri','Sat'];
+        const d = new Date(time*1000);
+        return days[d.getDay()]
     }
 }
 

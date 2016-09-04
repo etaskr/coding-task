@@ -4,10 +4,11 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const config = {
     entry: [
-        path.join(__dirname, '/app/src/app.js')
+        path.join(__dirname, '/app/src/index.js')
     ],
     output: {
         path: path.join(__dirname, '/dist/'),
@@ -34,9 +35,22 @@ const config = {
         // }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from: path.join(__dirname, '/app/assets'), to: 'assets' }
+        ])
     ],
     module: {
+        preLoaders: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'eslint-loader'
+        }],
+        // {
+        //     test: /\.js$/,
+        //     exclude: /node_modules/,
+        //     loader: 'jscs-loader'
+        // }],
         loaders: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,

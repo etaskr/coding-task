@@ -1,0 +1,57 @@
+.app-wrapper {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.app-error,
+.app-loader {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: $base-app-container-width;
+
+    object {
+        width: 70%;
+    }
+}
+
+.app-container {
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    transition: height .2s;
+    width: 100%;
+
+    @media (min-width: $max-mobile-width) {
+        border-radius: 3px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+        height: auto;
+        width: $base-app-container-width;
+    }
+}
+
+.app-container--freezing {
+    background: linear-gradient(#7651fb, #d4b4dd);
+}
+
+.app-container--cold {
+    background: linear-gradient(#4661ff, #94d5fe);
+}
+
+.app-container--cool {
+    background: linear-gradient(#1d77ef, #80f3fd);
+}
+
+.app-container--mild {
+    background: linear-gradient(#4fccf9, #3eecd1);
+}
+
+.app-container--warm {
+    background: linear-gradient(#fb5837, #fcbd7e);
+}
+
+.app-container-- hot {
+    background: linear-gradient(#f9462e, #f56474);
+}

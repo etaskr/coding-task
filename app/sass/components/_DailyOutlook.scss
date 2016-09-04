@@ -1,0 +1,10 @@
+.daily-list {
+    bottom: 0;
+    display: flex;
+    position: absolute;
+    width: 100%;
+
+    @media (min-width: $max-mobile-width) {
+        position: relative;
+    }
+}

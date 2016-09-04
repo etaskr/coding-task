@@ -1,0 +1,14 @@
+.daily {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 8px 0;
+}
+
+.daily__icon {
+    object {
+        height: 45px;
+        margin: -2px 0 -4px;
+    }
+}

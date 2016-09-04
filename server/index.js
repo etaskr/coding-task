@@ -16,6 +16,7 @@ import appErrorHandler from './middleware/error-handler';
 import routes from './routes';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
+
 const port = isDevelopment ? 3000 : process.env.PORT;
 
 const app = express();
@@ -69,5 +70,6 @@ app.use(appErrorHandler);
 
 // Start server
 app.listen(port, function () {
+    // $FlowIssue flow does not like the ternary definition or port - thinks port is a bool
     logger.info('server listening on port ' + port);
 });

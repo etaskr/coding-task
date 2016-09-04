@@ -47,7 +47,7 @@ class Forecaster {
         const options = {
             url: url,
             params: params,        // forecase.io options
-            validateStatus: null        // don't automatically reject responses - allows for custom error
+            validateStatus: null   // don't automatically reject responses - allows for custom error
         };
 
         return axios.request(options)
