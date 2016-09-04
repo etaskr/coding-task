@@ -1,0 +1,6 @@
+[ignore]
+.*/node_modules/fbjs/.*
+.*/node_modules/jsonlint/.*
+
+[options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowIssue
