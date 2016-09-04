@@ -3,8 +3,8 @@
  */
 
 import { expect } from 'chai';
-import { BadRequest } from '../../helpers/errors';
-import Forecaster from './';
+import { BadRequest } from '../../server/helpers/errors';
+import Forecaster from '../../server/lib/forecaster';
 
 // mock location (Melbourne)
 const mockLocation = {
@@ -20,7 +20,7 @@ if (!process.env.FORECASTIO_API_KEY) {
 // set up new forecaster
 const forecaster = new Forecaster(process.env.FORECASTIO_API_KEY);
 
-describe('Forecaster', function () {
+describe('[Service] Forecaster', function () {
     it('should throw a BadRequest for an invalid lat and long', function () {
         return expect(() => forecaster.getForecast('1', null)).to.throw(BadRequest);
     });

@@ -12,7 +12,7 @@
     "eslint": "eslint .",
     "jscs": "jscs .",
     "flow": "flow",
-    "test": "find ./server -name '*.spec.js' | xargs ./node_modules/.bin/mocha --compilers js:babel-core/register -R spec -s 1500 -t 3000"
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --recursive -R spec -s 1500 -t 3000"
   },
   "repository": {
     "type": "git",
@@ -55,6 +55,7 @@
     "json-stringify-safe": "^5.0.1",
     "mocha": "^3.0.2",
     "morgan": "^1.7.0",
+    "node-mocks-http": "^1.5.3",
     "node-sass": "^3.8.0",
     "nodemon": "^1.10.2",
     "postcss-loader": "^0.11.1",

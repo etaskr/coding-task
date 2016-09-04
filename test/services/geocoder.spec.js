@@ -3,8 +3,8 @@
  */
 
 import { expect } from 'chai';
-import { BadRequest } from '../../helpers/errors';
-import Geocoder from './';
+import { BadRequest } from '../../server/helpers/errors';
+import Geocoder from '../../server/lib/geocoder';
 
 // mock location (Melbourne)
 const mockLocation = {
@@ -17,7 +17,7 @@ const geocoder = new Geocoder();
 
 describe('Geocoder', function () {  
     describe('geocode', function () {
-        it('should throw a BadRequest error if no location is provided', function () {
+        it('[Service] should throw a BadRequest error if no location is provided', function () {
             return expect(() => geocoder.geocode()).to.throw(BadRequest);
         });
 
