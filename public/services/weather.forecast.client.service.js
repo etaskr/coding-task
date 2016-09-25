@@ -34,6 +34,7 @@ function weatherForecastService($http) {
 
         function getCurrentFailed(error) {
             console.log('Failed to get the weather data. ' + error.data);
+            return error;
         }
     }
 }

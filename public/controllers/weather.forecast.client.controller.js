@@ -26,14 +26,14 @@ function WeatherForecastController(weatherForecastService, geolocationService, u
     vm.time = '';
     vm.timezone = '';
 
-    vm.getGeolocationAndFetchCurrentWeatherData = getGeolocationAndFetchCurrentWeatherData;
+    vm.activate = activate;
     vm.getCurrentWeather = getCurrentWeather;
     
-    getGeolocationAndFetchCurrentWeatherData();
+    activate();
 
-    function getGeolocationAndFetchCurrentWeatherData()
+    function activate()
     {
-        geolocationService.getCurrentLocation()
+        return geolocationService.getCurrentLocation()
             .then(getCurrentWeather)
             .catch(function(error) {
                 alert(error);
